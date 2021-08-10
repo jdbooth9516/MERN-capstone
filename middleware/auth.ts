@@ -9,7 +9,7 @@ export default function (req: any, res: any, next: any) {
   }
 
   try {
-    const decoded = jwt.verify(token, config.get('jwtSecret'));
+    const decoded: any = jwt.verify(token, config.get('jwtSecret'));
     req.user = decoded.user;
     next();
   } catch (error) {
