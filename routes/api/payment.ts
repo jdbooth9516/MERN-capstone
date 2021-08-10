@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { json, Request, Response } from 'express';
 import auth from '../../middleware/auth';
 import PaymentAccount, { IPaymentAccount } from '../../models/Paymentaccount';
 import { body, validationResult } from 'express-validator';
@@ -20,7 +20,7 @@ router.post(
     body('zip', 'zip is required').not().isEmpty(),
   ],
 
-  async (req: any, res: any) => {
+  async (req: Request, res: Response) => {
     // check the validation
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -66,7 +66,7 @@ router.post(
 // ROUTE: get /api/paymentaccount/:user_id
 // DESC:  Get payment account based off of the user
 // ACCESS: Private
-router.get('/:user_id', auth, async (req: any, res: any) => {
+router.get('/:user_id', auth, async (req: Request, res: Response) => {
   try {
     //params == the id from the url
     const paymentAccount = await PaymentAccount.findOne({
@@ -84,7 +84,27 @@ router.get('/:user_id', auth, async (req: any, res: any) => {
       return res.status(400).json({ msg: 'Payment Account not found' });
     }
     res.status(500).send('server error');
-  }
+  } // Route: Delete api/profile
+  //DESC: Delete user and profile and post
+  //ACCESS: Private
 });
 
+// Route: Delete api/paymentaccount
+// DESC: Delete user and profile and post
+// ACCESS: Private
+
+router.delete('/', auth, async (req: Request, res: Response) => {
+  try {
+    //Remove the payment account
+    await PaymentAccount.findOneAndRemove({
+      user: req.user.id,
+    });
+    res.status(200).json({ msg: 'Account Deleted' });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({
+      msg: 'Server Error',
+    });
+  }
+});
 module.exports = router;

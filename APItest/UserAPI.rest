@@ -19,6 +19,12 @@ Content-Type: application/json
   "password": "janesmith"
 }
 
+
+### Delete a user. 
+DELETE http://localhost:5000/api/users HTTP/1.1
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjExMWVjYWY5MjczY2E3N2VlNmY1OGE4In0sImlhdCI6MTYyODYxMDU3NCwiZXhwIjoxNjI4NjQ2NTc0fQ.Q27UW_94z-GpPqAH335n8j5VnvVi9Z03Xm4TXC2ZD1Y
+
+
 ### create a Payment Account 
 
 POST http://localhost:5000/api/paymentaccount HTTP/1.1
@@ -31,3 +37,14 @@ Content-Type:  application/json
   "state": "teststate",
   "zip": "12345"
 }
+
+### get users payment Account
+
+GET http://localhost:5000/api/paymentaccount/6111ecaf9273ca77ee6f58a8 HTTP/1.1
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjExMWVjYWY5MjczY2E3N2VlNmY1OGE4In0sImlhdCI6MTYyODYxMDU3NCwiZXhwIjoxNjI4NjQ2NTc0fQ.Q27UW_94z-GpPqAH335n8j5VnvVi9Z03Xm4TXC2ZD1Y
+
+
+### Delete payment account
+
+DELETE  http://localhost:5000/api/paymentaccount HTTP/1.1
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjExMWVjYWY5MjczY2E3N2VlNmY1OGE4In0sImlhdCI6MTYyODYxMDU3NCwiZXhwIjoxNjI4NjQ2NTc0fQ.Q27UW_94z-GpPqAH335n8j5VnvVi9Z03Xm4TXC2ZD1Y

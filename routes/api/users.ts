@@ -1,7 +1,8 @@
-import express, { json } from 'express';
+import express, { json, Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 import config from 'config';
 import jwt from 'jsonwebtoken';
+import auth from '../../middleware/auth';
 import { body, validationResult } from 'express-validator';
 
 const router = express.Router();
@@ -56,5 +57,22 @@ router.post(
     }
   }
 );
+
+// Route: Delete api/users
+// DESC: Register User
+// ACCESS: private
+
+router.delete('/', auth, async (req: Request, res: Response) => {
+  try {
+    //Remove User
+    await User.findOneAndRemove({
+      _id: req.user.id,
+    });
+    res.json({ msg: 'user deleted' });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ msg: 'Server Error' });
+  }
+});
 
 module.exports = router;
