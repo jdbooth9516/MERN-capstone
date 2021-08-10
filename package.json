@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js",
+    "dev": "nodemon source/server.ts",
     "build": "tsc -p"
   },
   "author": "Jeremiah Booth",
@@ -20,7 +20,10 @@
     "request": "^2.88.2"
   },
   "devDependencies": {
+    "@types/config": "^0.0.39",
     "@types/express": "^4.17.13",
+    "@types/jsonwebtoken": "^8.5.4",
+    "@types/mongoose": "^5.11.97",
     "@types/node": "^16.4.13",
     "concurrently": "^6.2.1",
     "nodemon": "^2.0.12",

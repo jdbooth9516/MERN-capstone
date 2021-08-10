@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
-const config = require('config');
+import mongoose from 'mongoose';
+import config from 'config';
 
-const db = config.get('mongoURI');
+const db: string = config.get('mongoURI');
 
 const connectDB = async () => {
   try {
@@ -9,10 +9,11 @@ const connectDB = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
+    console.log('MongoDB Conneted...');
   } catch (error) {
     console.error(error.message);
     process.exit(1);
   }
 };
 
-module.exports = connectDB;
+export default connectDB;
