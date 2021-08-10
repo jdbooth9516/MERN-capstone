@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const PaymentSchem = new mongoose.Schema({
+const PaymentSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user',
@@ -17,4 +17,26 @@ const PaymentSchem = new mongoose.Schema({
     type: String,
     required: true,
   },
+  cards: [
+    {
+      name: {
+        type: String,
+        required: true,
+      },
+      number: {
+        type: String,
+        required: true,
+      },
+      expirationdate: {
+        type: String,
+        required: true,
+      },
+      ccv: {
+        type: String,
+        required: true,
+      },
+    },
+  ],
 });
+
+module.exports = Payment = mongoose.model('payment', PaymentSchema);
