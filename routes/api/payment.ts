@@ -63,4 +63,28 @@ router.post(
   }
 );
 
+// ROUTE: get /api/paymentaccount/:user_id
+// DESC:  Get payment account based off of the user
+// ACCESS: Private
+router.get('/:user_id', auth, async (req: any, res: any) => {
+  try {
+    //params == the id from the url
+    const paymentAccount = await PaymentAccount.findOne({
+      user: req.params.user_id,
+    }).populate('user', ['name']);
+
+    if (!paymentAccount) {
+      res.status(400).json({ msg: 'Payment Account not found' });
+    }
+    res.json(paymentAccount);
+  } catch (error) {
+    console.error(error.message);
+    //look to see if the id is invalid
+    if (error.kind == 'ObjedctId') {
+      return res.status(400).json({ msg: 'Payment Account not found' });
+    }
+    res.status(500).send('server error');
+  }
+});
+
 module.exports = router;
