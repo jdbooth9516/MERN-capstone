@@ -1,6 +1,7 @@
 import mongoose, { Schema } from 'mongoose';
 
 export interface ICard {
+  user: string;
   nameoncard: string;
   cardnumber: string;
   expiredate: string;
@@ -9,7 +10,7 @@ export interface ICard {
 
 const CardSchema = new Schema<ICard>({
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
-  nameonecard: { type: String, required: true },
+  nameoncard: { type: String, required: true },
   cardnumber: { type: String, required: true },
   expiredate: { type: String, required: true },
   cvv: { type: Number, required: true },

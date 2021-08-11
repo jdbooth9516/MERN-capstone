@@ -1,0 +1,12 @@
+### create or update card 
+
+POST http://localhost:5000/api/cards HTTP/1.1
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjExMWVjYWY5MjczY2E3N2VlNmY1OGE4In0sImlhdCI6MTYyODYxMDU3NCwiZXhwIjoxNjI4NjQ2NTc0fQ.Q27UW_94z-GpPqAH335n8j5VnvVi9Z03Xm4TXC2ZD1Y
+Content-Type: application/json
+
+{
+ "nameoncard": "Jane Smith",
+ "cardnumber": "1234123412341234",
+ "expiredate": "07/2022",
+ "cvv": 123
+}
