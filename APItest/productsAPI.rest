@@ -17,3 +17,8 @@ Content-Type: application/json
 
 GET http://localhost:5000/api/products HTTP/1.1
 
+
+
+### Get products by catagory
+
+GET http://localhost:5000/api/products/switch HTTP/1.1

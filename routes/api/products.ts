@@ -65,4 +65,21 @@ router.get('/', async (req: Request, res: Response) => {
   }
 });
 
+// Route: GET api/products/:catagory
+// DESC: Get all products by catagory
+// ACCESS: public
+
+router.get('/:catagory', async (req: Request, res: Response) => {
+  try {
+    const products = await Product.find({ catagory: req.params.catagory });
+    if (products.length == 0) {
+      res.status(400).json({ msg: 'No products found with that catagory' });
+    } else {
+      res.json(products);
+    }
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ msg: 'Server Error' });
+  }
+});
 module.exports = router;
