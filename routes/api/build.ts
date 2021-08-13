@@ -2,6 +2,8 @@ import express, { Request, Response } from 'express';
 import auth from '../../middleware/auth';
 import { body, validationResult } from 'express-validator';
 import Builds, { IBuilds } from '../../models/Build';
+import { handleError } from '../../source/server';
+
 
 const router = express.Router();
 
@@ -40,5 +42,38 @@ router.post(
     }
   }
 );
+// ROUTE: GET /api/builds/user
+// DESC:  get all builds by user
+// ACCESS: Private
 
+router.get("/user", auth, 
+  async (req:Request, res:Response) => { 
+    try {
+      const builds = await Builds.find({user: req.user.id});
+      if (builds.length === 0 ) { 
+        res.status(400).json({msg: "No builds found for that user"}); 
+      } else{
+        res.json(builds);
+      }
+    } catch (error) {
+      handleError(error, res)
+    }
+  }
+)
+
+
+// ROUTE; GET /api/builds
+// DESC: get all the builds 
+// ACCESS: public 
+
+router.get('/', 
+  async (req: Request, res:Response) => { 
+    try {
+      const builds = await Builds.find();
+      res.json(builds);
+    } catch (error) {
+      handleError(error, res)
+     }
+  }
+)
 module.exports = router;

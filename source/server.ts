@@ -3,6 +3,11 @@ import connectDB from '../config/db';
 
 const app = express();
 
+export function handleError (error: any, res:any){
+    console.error(error.message)
+    res.status(500).json({msg: "Server Error"})
+}
+
 connectDB();
 app.use(express.json());
 // def Routes here
