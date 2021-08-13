@@ -1,0 +1,16 @@
+
+$main-background: #333;
+$light-text: aliceblue;
+
+
+.App {
+  background-color: $primary-background-color;
+  color: $light-text;
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
