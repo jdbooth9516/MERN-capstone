@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import './scss/App.css';
 import NavBar from './components/Navbar/Navbar';
 import Registration from './components/Navbar/Registration';
+import Login from './components/Login/Login';
 
 // Redux
 import { Provider } from 'react-redux';
@@ -73,6 +74,7 @@ const App = () => {
         )}
         <Switch>
           <Route path='/register' component={Registration} />
+          <Route path='/login' component={Login} />
         </Switch>
       </div>
     </Provider>

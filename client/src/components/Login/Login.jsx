@@ -2,11 +2,11 @@ import axios from 'axios';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Form, FormGroup, Label, Input } from 'reactstrap';
-import useForm from '../UseForm/UseForm';
+import useForm from '../useForm/useForm';
 
 import './Login.css';
 
-const Login = (props) => {
+const Login = (props, {history}) => {
   const { values, handleChange, handleSubmit } = useForm(() => {
     loginUser(values);
   });
@@ -22,7 +22,7 @@ const Login = (props) => {
         console.log(userData);
         localStorage.setItem('user', userData);
         console.log(localStorage.getItem('user'));
-        window.location.href = '/';
+        history.push('/');
       } catch (error) {
         console.log(error.response);
         alert('Login failed, check username or password. ');
