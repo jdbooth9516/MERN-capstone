@@ -2,12 +2,14 @@ import React from 'react';
 import useForm from '../useForm/useForm';
 import axios from 'axios';
 import { Form, FormGroup, Label, Input } from 'reactstrap';
+import { connect } from 'react-redux';
+import { setAlert } from '../../actions/alert';
+import PropTypes from 'prop-types';
 
 import '../../scss/Registration.css';
 
-const Registration = ({ history }) => {
+const Registration = ({ history, setAlert }) => {
   const { values, handleChange, handleSubmit } = useForm(() => {
-    console.log(values);
     registerUser(values);
   });
 
@@ -28,8 +30,15 @@ const Registration = ({ history }) => {
         console.error(error.message);
       }
     }
-    addUserToDataBase(payload);
+    // deconstruct the values
+    const { password, password2 } = values;
+    if (password === password2) {
+      addUserToDataBase(payload);
+    } else {
+      setAlert('Passwords do not match', 'danger');
+    }
   }
+
   return (
     <div>
       <div className='form-container'>
@@ -91,4 +100,8 @@ const Registration = ({ history }) => {
   );
 };
 
-export default Registration;
+Registration.propTypes = {
+  setAlert: PropTypes.func.isRequired,
+};
+
+export default connect(null, { setAlert })(Registration);

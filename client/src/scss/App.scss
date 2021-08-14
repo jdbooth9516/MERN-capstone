@@ -5,15 +5,56 @@ $light-text: aliceblue;
 .App {
   background-image: linear-gradient(
       to bottom right,
-      $light-background,
-      $main-background
-    );
+      rgba(255, 255, 255, 0),
+      #000000
+    ),
+    url('../static/advantage-video-productions-OQAZ_unAWsY-unsplash.jpg');
+  background-size: cover;
+  background-blend-mode: normal;
   color: $light-text;
   text-align: center;
   height: 90vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.main-body {
+  height: 95vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+
+.welcome-title {
+  margin-top: 10vh;
+}
+
+.welcome-description {
+  margin-bottom: 5vh;
+}
+
+.btn-holder {
+  display: flex;
+  flex-direction: row;
+}
+
+.info-btn {
+  background-color: rgba(255, 255, 255, 0);
+  border: 1px solid rgb(0, 153, 255);
+  color: rgb(0, 153, 255);
+  margin: 2vh 1vw;
+}
+
+.build-btn {
+  background-color: rgba(255, 255, 255, 0);
+  border: 1px solid rgb(157, 253, 79);
+  color: rgb(157, 253, 79);
+  margin: 2vh 1vw;
+}
+
+.rec-btn {
+  background-color: rgba(255, 255, 255, 0);
+  border: 1px solid rgb(242, 253, 79);
+  color: rgb(242, 253, 79);
+  margin: 2vh 1vw;
 }
