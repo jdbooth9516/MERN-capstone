@@ -1,16 +1,19 @@
-
 $main-background: #333;
+$light-background: rgb(137, 148, 155);
 $light-text: aliceblue;
 
-
 .App {
-  background-color: $primary-background-color;
+  background-image: linear-gradient(
+      to bottom right,
+      $light-background,
+      $main-background
+    );
   color: $light-text;
   text-align: center;
+  height: 90vh;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
-
