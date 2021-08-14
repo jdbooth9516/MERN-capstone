@@ -8,6 +8,9 @@ import { body, validationResult } from 'express-validator';
 const router = express.Router();
 import User from '../../models/User';
 
+// Route: POST api/users
+// DESC: Register User
+// ACCESS: private
 router.post(
   '/',
   [
@@ -25,7 +28,7 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { name, email, password } = req.body;
+    const { name, email, role, password } = req.body;
 
     try {
       let user = await User.findOne({ email });
@@ -41,6 +44,7 @@ router.post(
       user = new User({
         name,
         email,
+        role,
         password,
       });
 
@@ -57,7 +61,7 @@ router.post(
 );
 
 // Route: Delete api/users
-// DESC: Register User
+// DESC: delet user
 // ACCESS: private
 
 router.delete('/', auth, async (req: Request, res: Response) => {

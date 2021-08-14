@@ -1,12 +1,14 @@
-
 import { useState } from 'react';
 
-const userForm = (callback) => {
-  const [values, setValues] = userState({});
+const useForm = (callback) => {
+  const [values, setValues] = useState({});
 
   const handleChange = (event) => {
     event.persist();
-    setValues(values => ({ ...values, [event.target.name]: event.target.value }));
+    setValues((values) => ({
+      ...values,
+      [event.target.name]: event.target.value,
+    }));
   };
 
   const handleSubmit = (event) => {
@@ -14,8 +16,7 @@ const userForm = (callback) => {
     callback();
   };
 
-  return { values, handleChange, handleSubmit }
+  return { values, handleChange, handleSubmit };
 };
 
-export default userForm;
-S
+export default useForm;
