@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import './scss/App.css';
 import NavBar from './components/Navbar/Navbar';
@@ -13,8 +13,25 @@ import Information from './components/information/Information';
 
 const App = () => {
   const [infoSwitch, setInfoSwitch] = useState(false);
-  const [loggedInUser, setUser] = useState({});
+  const [user, setUser] = useState('none');
 
+  useEffect(() => {
+    checkForUser();
+    console.log(user);
+  }, [user]);
+
+  const getUser = () => {
+    let cookieCrumble = document.cookie.split('=');
+    console.log(cookieCrumble);
+    const user = cookieCrumble[1];
+    setUser(user);
+  };
+
+  const checkForUser = () => {
+    if (user === 'none') {
+      getUser();
+    }
+  };
   return (
     <Provider store={store}>
       <div className='App'>
@@ -74,7 +91,10 @@ const App = () => {
         )}
         <Switch>
           <Route path='/register' component={Registration} />
-          <Route path='/login/' exact component={Login} />
+          <Route
+            path='/login/'
+            render={(props) => <Login {...props} getUser={getUser} />}
+          />
         </Switch>
       </div>
     </Provider>

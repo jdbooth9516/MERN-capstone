@@ -6,7 +6,7 @@ import useForm from '../useForm/useForm';
 
 import './Login.css';
 
-const Login = ({ props, history }) => {
+const Login = (props) => {
   const { values, handleChange, handleSubmit } = useForm(() => {
     loginUser(values);
   });
@@ -22,7 +22,7 @@ const Login = ({ props, history }) => {
 
         console.log(cookie);
         document.cookie = cookie;
-        window.location.href = '/';
+        props.getUser();
       } catch (error) {
         console.log(error.response);
         alert('Login failed, check username or password. ');
