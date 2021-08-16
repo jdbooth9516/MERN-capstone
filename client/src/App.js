@@ -10,6 +10,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import Alert from './components/Alerts/Alert';
 import Information from './components/information/Information';
+import Buildhome from './components/Buildform/Buildhome';
 
 const App = () => {
   const [infoSwitch, setInfoSwitch] = useState(false);
@@ -94,6 +95,10 @@ const App = () => {
           <Route
             path='/login/'
             render={(props) => <Login {...props} getUser={getUser} />}
+          />
+          <Route
+            path='/build'
+            render={(props) => <Buildhome {...props} user={user} />}
           />
         </Switch>
       </div>

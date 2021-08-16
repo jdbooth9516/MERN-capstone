@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
-import "./Information.css";
+import React, { useState, useEffect, useRef } from 'react';
+import './Information.css';
 
 const Information = () => {
   const mainRef = useRef(null);
@@ -20,36 +20,32 @@ const Information = () => {
   }, []);
 
   return (
-    <div ref={mainRef} tabIndex="-1" className="information-container">
+    <div className='information-container'>
       {/* VIDEO SECTION */}
-      <div className="video-player">
+      <div ref={mainRef} tabIndex='-1' className='video-player'>
         <iframe
-          id="ytplayer"
-          type="text/html"
-          width="854"
-          height="480"
+          id='ytplayer'
+          type='text/html'
+          width='854'
+          height='480'
           src={`https://www.youtube.com/embed/Qr3nYR15wxU?autoplay=0&origin=http://example.com`}
-          frameborder="0"
-        ></iframe>
+          frameborder='0'></iframe>
       </div>
       {/* button tabs */}
-      <div className="info-tabs">
+      <div className='info-tabs'>
         <button
-          className="category-btn-1"
-          onClick={() => (closeAll(), setLayout(true))}
-        >
+          className='category-btn-1'
+          onClick={() => (closeAll(), setLayout(true))}>
           Layout
         </button>
         <button
-          className="category-btn-2"
-          onClick={() => (closeAll(), setSwitches(true))}
-        >
+          className='category-btn-2'
+          onClick={() => (closeAll(), setSwitches(true))}>
           Switches
         </button>
         <button
-          className="category-btn-3"
-          onClick={() => (closeAll(), setServices(true))}
-        >
+          className='category-btn-3'
+          onClick={() => (closeAll(), setServices(true))}>
           Services
         </button>
         {/* <button
@@ -61,17 +57,17 @@ const Information = () => {
       </div>
       {/* INFORMATION BY CATEGORY */}
       {layout ? (
-        <div className="info-sections">
+        <div className='info-sections'>
           <h5>Layouts</h5>
-          <div className="info-card-sections">
-            <div className="info-card">
+          <div className='info-card-sections'>
+            <div className='info-card'>
               <h5>Full</h5>
-              <div className="information details">
+              <div className='information details'>
                 <img
-                  src="https://images-na.ssl-images-amazon.com/images/I/71--t5c6-lL._AC_SL1500_.jpg"
-                  alt="pic of full keyboard"
-                  width="auto"
-                  height="100"
+                  src='https://images-na.ssl-images-amazon.com/images/I/71--t5c6-lL._AC_SL1500_.jpg'
+                  alt='pic of full keyboard'
+                  width='auto'
+                  height='100'
                 />
                 <p>
                   A full-size keyboard has alphabetic characters keys,
@@ -86,15 +82,15 @@ const Information = () => {
                 </p>
               </div>
             </div>
-            <div className="info-card-sections">
-              <div className="info-card">
+            <div className='info-card-sections'>
+              <div className='info-card'>
                 <h5>Ten Keyless TKL</h5>
-                <div className="information details">
+                <div className='information details'>
                   <img
-                    src="https://hobgear.com/wp-content/uploads/2016/09/filco-majestouch-2-tkl-1.jpg"
-                    alt="pic of TKL keyboard"
-                    width="auto"
-                    height="75"
+                    src='https://hobgear.com/wp-content/uploads/2016/09/filco-majestouch-2-tkl-1.jpg'
+                    alt='pic of TKL keyboard'
+                    width='auto'
+                    height='75'
                   />
                   <p>
                     Tenkey-less keyboard is, well, tenkey-less. The tenkey-less
@@ -110,15 +106,15 @@ const Information = () => {
                 </div>
               </div>
             </div>
-            <div className="info-card-sections">
-              <div className="info-card">
+            <div className='info-card-sections'>
+              <div className='info-card'>
                 <h5>60% Keyboard</h5>
-                <div className="information details">
+                <div className='information details'>
                   <img
-                    src="https://imgr.search.brave.com/_V_uV9zlQ3vzGd0zJ38mEKkBnEOwhVE9C05tdzzMmOw/fit/632/225/no/1/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5u/ZUFCb29sOEJzenE0/Smh1STNJRjJnSGFG/aiZwaWQ9QXBp"
-                    alt="pic of 60% keyboard"
-                    width="auto"
-                    height="75"
+                    src='https://imgr.search.brave.com/_V_uV9zlQ3vzGd0zJ38mEKkBnEOwhVE9C05tdzzMmOw/fit/632/225/no/1/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5u/ZUFCb29sOEJzenE0/Smh1STNJRjJnSGFG/aiZwaWQ9QXBp'
+                    alt='pic of 60% keyboard'
+                    width='auto'
+                    height='75'
                   />
                   <p>
                     The 60 percent keyboards are mechanical keyboards that have
@@ -131,15 +127,15 @@ const Information = () => {
                 </div>
               </div>
             </div>
-            <div className="info-card-sections">
-              <div className="info-card">
+            <div className='info-card-sections'>
+              <div className='info-card'>
                 <h5>60% Keyboard</h5>
-                <div className="information details">
+                <div className='information details'>
                   <img
-                    src="https://imgr.search.brave.com/-BA_2ENcMtxgun_oSyRnAlsKP-RurtTpXQYjlh189uw/fit/693/225/no/1/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5m/c1BoLTBmQmozYk5t/RVVyQmhha2xBSGFG/RSZwaWQ9QXBp"
-                    alt="pic of 60% keyboard"
-                    width="auto"
-                    height="75"
+                    src='https://imgr.search.brave.com/-BA_2ENcMtxgun_oSyRnAlsKP-RurtTpXQYjlh189uw/fit/693/225/no/1/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5m/c1BoLTBmQmozYk5t/RVVyQmhha2xBSGFG/RSZwaWQ9QXBp'
+                    alt='pic of 60% keyboard'
+                    width='auto'
+                    height='75'
                   />
                   <p>
                     The primary reason split keyboards are so comfortable is
@@ -158,26 +154,25 @@ const Information = () => {
         </div>
       ) : null}
       {switches ? (
-        <div className="info-sections">
+        <div className='info-sections'>
           <h5>Switches</h5>
           <iframe
-            width="854"
-            height="480"
-            src="https://www.youtube.com/embed/yXfysGqNLeE"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
-          <div className="info-card-sections">
-            <div className="info-card">
+            width='854'
+            height='480'
+            src='https://www.youtube.com/embed/yXfysGqNLeE'
+            title='YouTube video player'
+            frameborder='0'
+            allow='accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+            allowfullscreen></iframe>
+          <div className='info-card-sections'>
+            <div className='info-card'>
               <h5>Blues</h5>
-              <div className="information details">
+              <div className='information details'>
                 <img
-                  src="https://www.ttesports.com/html/Switch/img/A04.png"
-                  alt="pic of blue switch"
-                  width="auto"
-                  height="100"
+                  src='https://www.ttesports.com/html/Switch/img/A04.png'
+                  alt='pic of blue switch'
+                  width='auto'
+                  height='100'
                 />
                 <p>
                   The blue switches are still mechanical clicky keys, but
@@ -193,15 +188,15 @@ const Information = () => {
               </div>
             </div>
           </div>
-          <div className="info-card-sections">
-            <div className="info-card">
+          <div className='info-card-sections'>
+            <div className='info-card'>
               <h5>Reds</h5>
-              <div className="information details">
+              <div className='information details'>
                 <img
-                  src="https://www.ttesports.com/html/Switch/img/A03.png"
-                  alt="pic of Red Switch"
-                  width="auto"
-                  height="100"
+                  src='https://www.ttesports.com/html/Switch/img/A03.png'
+                  alt='pic of Red Switch'
+                  width='auto'
+                  height='100'
                 />
                 <p>
                   Red switches are your classic gamer switches. Reds have been
@@ -213,15 +208,15 @@ const Information = () => {
               </div>
             </div>
           </div>
-          <div className="info-card-sections">
-            <div className="info-card">
+          <div className='info-card-sections'>
+            <div className='info-card'>
               <h5>Browns</h5>
-              <div className="information details">
+              <div className='information details'>
                 <img
-                  src="https://www.ttesports.com/html/Switch/img/A05.png"
-                  alt="pic of Brown Switch"
-                  width="auto"
-                  height="100"
+                  src='https://www.ttesports.com/html/Switch/img/A05.png'
+                  alt='pic of Brown Switch'
+                  width='auto'
+                  height='100'
                 />
                 <p>
                   The brown switches are the jack-of-of-all-trades, they work
@@ -238,12 +233,12 @@ const Information = () => {
         </div>
       ) : null}
       {services ? (
-        <div className="info-sections">
+        <div className='info-sections'>
           <h5>Services</h5>
-          <div className="info-card-sections">
-            <div className="info-card">
+          <div className='info-card-sections'>
+            <div className='info-card'>
               <h5>Lubing switches</h5>
-              <div className="information details">
+              <div className='information details'>
                 <p>
                   Lubricating switches can help dampen sounds both from the
                   housing and stem itself but also from the spring. It can
@@ -256,10 +251,10 @@ const Information = () => {
               </div>
             </div>
           </div>
-          <div className="info-card-sections">
-            <div className="info-card">
+          <div className='info-card-sections'>
+            <div className='info-card'>
               <h5>Film switches </h5>
-              <div className="information details">
+              <div className='information details'>
                 <p>
                   Normally keystrokes will have slightly different sounds. This
                   depends on a few different variables. One of these variables
@@ -273,10 +268,10 @@ const Information = () => {
               </div>
             </div>
           </div>
-          <div className="info-card-sections">
-            <div className="info-card">
+          <div className='info-card-sections'>
+            <div className='info-card'>
               <h5>Silencing Stablilisers </h5>
-              <div className="information details">
+              <div className='information details'>
                 <p>
                   Stabilisers are attached to the larger keys, such as the
                   spacebar, enter, shift, and backspace. They can be loud,
