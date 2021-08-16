@@ -74,7 +74,7 @@ const App = () => {
         )}
         <Switch>
           <Route path='/register' component={Registration} />
-          <Route path='/login' component={Login} />
+          <Route path='/login/' exact component={Login} />
         </Switch>
       </div>
     </Provider>

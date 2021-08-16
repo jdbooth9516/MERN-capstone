@@ -1,12 +1,12 @@
 import axios from 'axios';
 import React from 'react';
-import { Link } from 'react-router-dom';
+
 import { Form, FormGroup, Label, Input } from 'reactstrap';
 import useForm from '../useForm/useForm';
 
 import './Login.css';
 
-const Login = (props, {history}) => {
+const Login = ({ props, history }) => {
   const { values, handleChange, handleSubmit } = useForm(() => {
     loginUser(values);
   });
@@ -15,14 +15,14 @@ const Login = (props, {history}) => {
     async function getUser(values) {
       try {
         const response = await axios.post(
-          'http://localhost:8000/login/',
+          'http://localhost:5000/api/login',
           values
         );
-        const userData = JSON.stringify(response.data);
-        console.log(userData);
-        localStorage.setItem('user', userData);
-        console.log(localStorage.getItem('user'));
-        history.push('/');
+        const cookie = 'jwt=' + `${response.data['token']}; path=/`;
+
+        console.log(cookie);
+        document.cookie = cookie;
+        window.location.href = '/';
       } catch (error) {
         console.log(error.response);
         alert('Login failed, check username or password. ');
