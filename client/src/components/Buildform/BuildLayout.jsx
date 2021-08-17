@@ -1,6 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import useForm from '../useForm/useForm';
-import { Form, FormGroup, Label, Input } from 'reactstrap';
 import axios from 'axios';
 
 // redux imports
@@ -11,9 +10,6 @@ import { removeBuildName } from '../../actions/buildname';
 
 const BuildLayout = ({ setLayout, buildnames, removeBuildName }) => {
   //STATE
-  const { values, handleChange, handleSubmit } = useForm(() => {
-    // setLayoutName(values);
-  });
   const [layouts, setlayouts] = useState([]);
 
   useEffect(() => {
@@ -26,7 +22,6 @@ const BuildLayout = ({ setLayout, buildnames, removeBuildName }) => {
       const response = await axios.get(
         'http://localhost:5000/api/products/layout'
       );
-      console.log(response.data);
       setlayouts(response.data);
     } catch (error) {
       console.error(error.message);
@@ -38,6 +33,12 @@ const BuildLayout = ({ setLayout, buildnames, removeBuildName }) => {
       getLayouts();
     }
   };
+
+  const handleChoice = (choice) => {
+    
+    setLayout(choice.name, choice.price);
+    
+  }
 
   const goBack = () => {
     const buildname = buildnames;
@@ -53,7 +54,7 @@ const BuildLayout = ({ setLayout, buildnames, removeBuildName }) => {
 
       <div className={`cards-container`}>
         {layouts.map((layout, index) => (
-          <Fragment>
+          <div onClick = {() => {handleChoice(layout)}}>
             <div className='layout-title'>
               <h4>{layout.name}</h4>
             </div>
@@ -69,7 +70,7 @@ const BuildLayout = ({ setLayout, buildnames, removeBuildName }) => {
             <div className='layout-price'>
               <h5>$ {layout.price}</h5>
             </div>
-          </Fragment>
+          </div>
         ))}
       </div>
       <div className='total-price'>
