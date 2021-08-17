@@ -1,14 +1,14 @@
-import { REMOVE_NAME, SET_NAME } from '../actions/types';
+import { SET_LAYOUT, REMOVE_LAYOUT } from '../actions/types';
 
 const initialState = [];
 
 export default function (state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
-    case SET_NAME:
+    case SET_LAYOUT:
       return [...state, payload];
-    case REMOVE_NAME:
-      return state.filter((buildname) => buildname.id !== payload);
+    case REMOVE_LAYOUT:
+      return state.filter((layout) => layout.id !== payload);
     default:
       return state;
   }
