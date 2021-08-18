@@ -4,10 +4,10 @@ POST http://localhost:5000/api/products HTTP/1.1
 Content-Type: application/json
 
 {
-  "name": "Full Keyboard",
-  "catagory": "Layout",
-  "shortdesc": "Full 108 key keyboard",
-  "longdesc": "add text here ",
+  "name": "Red Switches",
+  "catagory": "switch",
+  "shortdesc": "smooth and quiet switches",
+  "longdesc": " add more information here ",
   "photo": "",
   "price": 100.00
 }

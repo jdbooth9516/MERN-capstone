@@ -6,3 +6,6 @@ export const REMOVE_NAME = 'REMOVE_NAME';
 
 export const SET_LAYOUT = 'SET_LAYOUT';
 export const REMOVE_LAYOUT = 'REMOVE_LAYOUT';
+
+export const SET_SWITCH = 'SET_SWITCH';
+export const REMOVE_SWITCH = 'SET_SWITCH';

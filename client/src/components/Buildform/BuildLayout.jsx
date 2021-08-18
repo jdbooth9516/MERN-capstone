@@ -1,5 +1,4 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import useForm from '../useForm/useForm';
 import axios from 'axios';
 
 // redux imports
@@ -54,7 +53,7 @@ const BuildLayout = ({ setLayout, buildnames, removeBuildName }) => {
 
       <div className={`cards-container`}>
         {layouts.map((layout, index) => (
-          <div onClick = {() => {handleChoice(layout)}}>
+          <div key={index} onClick = {() => {handleChoice(layout)}}>
             <div className='layout-title'>
               <h4>{layout.name}</h4>
             </div>
