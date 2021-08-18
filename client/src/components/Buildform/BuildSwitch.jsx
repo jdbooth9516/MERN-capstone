@@ -16,6 +16,8 @@ const BuildSwitch = ({ setSwitch, buildlayout, removeBuildLayout }) => {
   useEffect(() => {
     checkForSwitches();
   }, [switches]);
+
+  
   //METHOD
   const getSwitches = async () => {
     try {
