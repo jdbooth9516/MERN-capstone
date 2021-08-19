@@ -48,7 +48,7 @@ const BuildSwitch = ({
   };
 
   const goBack = () => {
-    console.log(buildlayout[0].id);
+    removeFromTotal(total, buildlayout[0].price);
     removeBuildLayout(buildlayout[0].id);
   };
 
@@ -114,4 +114,5 @@ export default connect(mapStateToProps, {
   setSwitch,
   removeBuildLayout,
   setTotal,
+  removeFromTotal,
 })(BuildSwitch);

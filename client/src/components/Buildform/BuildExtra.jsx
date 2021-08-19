@@ -48,7 +48,7 @@ const BuildExtra = ({
   };
 
   const goBack = () => {
-    console.log(buildservice[0].id);
+    removeFromTotal(total, buildservice[0].price);
     removeBuildServices(buildservice[0].id);
   };
 
@@ -114,4 +114,5 @@ export default connect(mapStateToProps, {
   setExtra,
   removeBuildServices,
   setTotal,
+  removeFromTotal,
 })(BuildExtra);

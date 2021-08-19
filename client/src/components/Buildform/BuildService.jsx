@@ -47,7 +47,7 @@ const BuildService = ({
   };
 
   const goBack = () => {
-    console.log(buildswitch[0].id);
+    removeFromTotal(total, buildswitch[0].price);
     removeBuildSwitch(buildswitch[0].id);
   };
   return (
@@ -110,4 +110,5 @@ export default connect(mapStateToProps, {
   setService,
   removeBuildSwitch,
   setTotal,
+  removeFromTotal,
 })(BuildService);

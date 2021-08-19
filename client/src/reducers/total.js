@@ -8,7 +8,7 @@ export default function (state = initialState, action) {
     case SET_TOTAL:
       return payload.currentPrice + payload.productPrice;
     case REMOVE_TOTAL:
-      return state.filter((switches) => switches.id !== payload);
+      return payload.currentPrice - payload.productPrice;
     default:
       return state;
   }

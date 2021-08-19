@@ -11,7 +11,7 @@ export const setExtra = (msg, price) => (dispatch) => {
 
 export const removeBuildExtra = (id) => (dispatch) => {
   dispatch({
-    type: REMOVE_SWITCH,
+    type: REMOVE_EXTRA,
     payload: id,
   });
 };

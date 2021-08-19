@@ -3,6 +3,8 @@ import axios from 'axios';
 
 // redux import
 import { connect } from 'react-redux';
+import { removeBuildExtra } from '../../actions/extra';
+import { removeFromTotal } from '../../actions/total';
 
 const ConfirmBuild = ({
   user,
@@ -11,9 +13,16 @@ const ConfirmBuild = ({
   buildswitch,
   buildservice,
   buildextra,
+  removeBuildExtra,
+  removeFromTotal,
   total,
 }) => {
   console.log(user);
+
+  const goBack = () => {
+    removeFromTotal(total, buildextra[0].price);
+    removeBuildExtra(buildextra[0].id);
+  };
 
   return (
     <div className='confirmbuild-cont'>
@@ -54,6 +63,12 @@ const ConfirmBuild = ({
       </div>
 
       <button>Confirm</button>
+      <button
+        onClick={() => {
+          goBack();
+        }}>
+        Go Back
+      </button>
     </div>
   );
 };
@@ -67,4 +82,6 @@ const mapStateToProps = (state) => ({
   total: state.total,
 });
 
-export default connect(mapStateToProps)(ConfirmBuild);
+export default connect(mapStateToProps, { removeBuildExtra, removeFromTotal })(
+  ConfirmBuild
+);
