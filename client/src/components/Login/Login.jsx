@@ -22,7 +22,7 @@ const Login = (props) => {
 
         console.log(cookie);
         document.cookie = cookie;
-        props.getUser();
+        window.location.href = '/';
       } catch (error) {
         console.log(error.response);
         alert('Login failed, check username or password. ');

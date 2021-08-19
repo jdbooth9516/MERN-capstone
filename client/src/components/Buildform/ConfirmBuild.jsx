@@ -17,7 +17,32 @@ const ConfirmBuild = ({
   removeFromTotal,
   total,
 }) => {
-  console.log(user);
+  axios.defaults.headers.common['x-auth-token'] = user;
+  const addBuildToDatabase = async () => {
+    console.log(user);
+    const payload = {
+      "buildname": buildnames[0].msg,
+      products: [
+        buildlayouts[0].msg,
+        buildswitch[0].msg,
+        buildservice[0].msg,
+        buildextra[0].msg,
+      ],
+      totalprice: total,
+    };
+    console.log(payload);
+    try {
+      const response = await axios.post(
+        'http://localhost:5000/api/build',
+        payload,
+        { headers: { 'x-auth-token': user } }
+      );
+      console.log(response.data);
+      alert(`Build ${buildnames[0].msg} has been created`);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
 
   const goBack = () => {
     removeFromTotal(total, buildextra[0].price);
@@ -62,7 +87,12 @@ const ConfirmBuild = ({
         <h3>$ {total} </h3>
       </div>
 
-      <button>Confirm</button>
+      <button
+        onClick={() => {
+          addBuildToDatabase();
+        }}>
+        Confirm
+      </button>
       <button
         onClick={() => {
           goBack();

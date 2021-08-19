@@ -11,6 +11,7 @@ import store from './store';
 import Alert from './components/Alerts/Alert';
 import Information from './components/information/Information';
 import Buildhome from './components/Buildform/Buildhome';
+import Logout from './components/Navbar/Logout';
 
 const App = () => {
   const [infoSwitch, setInfoSwitch] = useState(false);
@@ -36,7 +37,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <div className='App'>
-        <NavBar />
+        <NavBar user={user} />
         <Alert />
         {window.location.pathname === '/' && (
           <div>
@@ -99,6 +100,12 @@ const App = () => {
           <Route
             path='/build'
             render={(props) => <Buildhome {...props} user={user} />}
+          />
+          <Route
+            path='/logout'
+            render={(props) => (
+              <Logout {...props} user={user} getUser={getUser} />
+            )}
           />
         </Switch>
       </div>

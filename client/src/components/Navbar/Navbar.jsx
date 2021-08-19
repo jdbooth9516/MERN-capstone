@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import jwt from 'jsonwebtoken';
 import {
   Collapse,
   Navbar,
@@ -10,10 +11,16 @@ import {
 } from 'reactstrap';
 import '../../scss/Navbar.css';
 
-const NavBar = () => {
+const NavBar = ({ user }) => {
   const [collapsed, setCollapsed] = useState(true);
+  let role = '';
 
   const toggleNavbar = () => setCollapsed(!collapsed);
+
+  if (user !== 'none') {
+    const userInfo = jwt.decode(user);
+    role = userInfo.user.role;
+  }
 
   return (
     <div>
@@ -24,34 +31,39 @@ const NavBar = () => {
         <NavbarToggler onClick={toggleNavbar} className='mr-2' />
         <Collapse isOpen={!collapsed} navbar>
           <Nav navbar>
-            <div>
-              <NavItem>
-                <NavLink href='/Register/'>Register</NavLink>
-              </NavItem>
+            {user === 'none' && (
+              <div>
+                <NavItem>
+                  <NavLink href='/Register'>Register</NavLink>
+                </NavItem>
 
-              <NavItem>
-                <NavLink href='/login/'>Login</NavLink>
-              </NavItem>
-            </div>
-            <div>
-              <NavItem>
-                <NavLink href='/logout/'>Logout</NavLink>
-              </NavItem>
+                <NavItem>
+                  <NavLink href='/login'>Login</NavLink>
+                </NavItem>
+              </div>
+            )}
+            {role === 'employee' && (
+              <div>
+                <NavItem>
+                  <NavLink href='/logout'>Logout</NavLink>
+                </NavItem>
 
-              <NavItem>
-                <NavLink href='/portal/'>Employee Portal</NavLink>
-              </NavItem>
-            </div>
+                <NavItem>
+                  <NavLink href='/portal'>Employee Portal</NavLink>
+                </NavItem>
+              </div>
+            )}
+            {role === 'customer' && (
+              <div>
+                <NavItem>
+                  <NavLink href='/logout'>Logout</NavLink>
+                </NavItem>
 
-            <div>
-              <NavItem>
-                <NavLink href='/logout/'>Logout</NavLink>
-              </NavItem>
-
-              <NavItem>
-                <NavLink href='/cart/'>Shopping Cart</NavLink>
-              </NavItem>
-            </div>
+                <NavItem>
+                  <NavLink href='/cart'>Shopping Cart</NavLink>
+                </NavItem>
+              </div>
+            )}
           </Nav>
         </Collapse>
       </Navbar>

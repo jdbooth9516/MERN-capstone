@@ -25,10 +25,11 @@ router.post(
     }
 
     // deconstruction
-    const { products, totalprice } = req.body;
+    const {buildname, products, totalprice } = req.body;
 
     const buildFields = <IBuilds>{};
     buildFields.user = req.user.id;
+    if (buildname) buildFields.buildname = buildname;
     if (totalprice) buildFields.totalprice = totalprice;
     if (products) buildFields.products = products;
 
