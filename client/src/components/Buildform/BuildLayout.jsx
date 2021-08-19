@@ -6,8 +6,16 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { setLayout } from '../../actions/layout';
 import { removeBuildName } from '../../actions/buildname';
+import { setTotal, removeFromTotal } from '../../actions/total';
 
-const BuildLayout = ({ setLayout, buildnames, removeBuildName }) => {
+const BuildLayout = ({
+  setLayout,
+  buildnames,
+  removeBuildName,
+  total,
+  setTotal,
+  removeFromTotal,
+}) => {
   //STATE
   const [layouts, setlayouts] = useState([]);
 
@@ -34,10 +42,9 @@ const BuildLayout = ({ setLayout, buildnames, removeBuildName }) => {
   };
 
   const handleChoice = (choice) => {
-    
     setLayout(choice.name, choice.price);
-    
-  }
+    setTotal(total, choice.price);
+  };
 
   const goBack = () => {
     const buildname = buildnames;
@@ -53,7 +60,11 @@ const BuildLayout = ({ setLayout, buildnames, removeBuildName }) => {
 
       <div className={`cards-container`}>
         {layouts.map((layout, index) => (
-          <div key={index} onClick = {() => {handleChoice(layout)}}>
+          <div
+            key={index}
+            onClick={() => {
+              handleChoice(layout);
+            }}>
             <div className='layout-title'>
               <h4>{layout.name}</h4>
             </div>
@@ -74,7 +85,7 @@ const BuildLayout = ({ setLayout, buildnames, removeBuildName }) => {
       </div>
       <div className='total-price'>
         <h3>Build Cost</h3>
-        {/* <h3>$ {props.totalPrice} </h3> */}
+        <h3>$ {total} </h3>
       </div>
 
       <div>
@@ -96,8 +107,11 @@ BuildLayout.propTypes = {
 
 const mapStateToProps = (state) => ({
   buildnames: state.buildname,
+  total: state.total,
 });
 
-export default connect(mapStateToProps, { setLayout, removeBuildName })(
-  BuildLayout
-);
+export default connect(mapStateToProps, {
+  setLayout,
+  removeBuildName,
+  setTotal,
+})(BuildLayout);

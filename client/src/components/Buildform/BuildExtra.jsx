@@ -1,84 +1,84 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import axios from 'axios';
 
-// redux imports
+//redux imports
 
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { setSwitch } from '../../actions/switch';
-import { removeBuildLayout } from '../../actions/layout';
+import { setExtra } from '../../actions/extra';
+import { removeBuildServices } from '../../actions/service';
 import { setTotal, removeFromTotal } from '../../actions/total';
 
-const BuildSwitch = ({
-  setSwitch,
-  buildlayout,
-  removeBuildLayout,
+const BuildExtra = ({
+  setExtra,
+  buildservice,
+  removeBuildServices,
   total,
   setTotal,
   removeFromTotal,
 }) => {
   //STATE
-  const [switches, setSwitches] = useState([]);
+  const [extras, setExtras] = useState([]);
 
   useEffect(() => {
-    checkForSwitches();
-  }, [switches]);
+    checkForExtras();
+  }, [extras]);
 
-  //METHOD
-  const getSwitches = async () => {
+  //METHODS
+  const getExtras = async () => {
     try {
       const response = await axios.get(
-        'http://localhost:5000/api/products/switch'
+        'http://localhost:5000/api/products/extra'
       );
-      setSwitches(response.data);
+      setExtras(response.data);
     } catch (error) {
       console.error(error.message);
     }
   };
 
-  const checkForSwitches = () => {
-    if (switches.length === 0) {
-      getSwitches();
+  const checkForExtras = () => {
+    if (extras.length === 0) {
+      getExtras();
     }
   };
 
   const handleChoice = (choice) => {
-    setSwitch(choice.name, choice.price);
+    setExtra(choice.name, choice.price);
     setTotal(total, choice.price);
   };
 
   const goBack = () => {
-    console.log(buildlayout[0].id);
-    removeBuildLayout(buildlayout[0].id);
+    console.log(buildservice[0].id);
+    removeBuildServices(buildservice[0].id);
   };
 
   return (
     <Fragment>
       <div>
-        <h2>Switches</h2>
+        <h2>Product extras</h2>
       </div>
 
       <div>
-        {switches.map((kswitches, index) => (
+        {extras.map((extra, index) => (
           <div
             key={index}
             onClick={() => {
-              handleChoice(kswitches);
+              handleChoice(extra);
             }}>
             <div className='layout-title'>
-              <h4>{kswitches.name}</h4>
+              <h4>{extra.name}</h4>
             </div>
             <div className='layout-body'>
-              <p>{kswitches.shortdesc}</p>
+              <p>{extra.shortdesc}</p>
             </div>
 
             <div className='layout-hidden' id={`hidding-${index}`}>
               <h6>More Information:</h6>
-              <p>{kswitches.longdesc}</p>
+              <p>{extra.longdesc}</p>
             </div>
 
             <div className='layout-price'>
-              <h5>$ {kswitches.price}</h5>
+              <h5>$ {extra.price}</h5>
             </div>
           </div>
         ))}
@@ -101,17 +101,17 @@ const BuildSwitch = ({
   );
 };
 
-BuildSwitch.propTypes = {
-  setSwitch: PropTypes.func.isRequired,
+BuildExtra.propTypes = {
+  setExtra: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  buildlayout: state.buildlayout,
+  buildservice: state.buildservice,
   total: state.total,
 });
 
 export default connect(mapStateToProps, {
-  setSwitch,
-  removeBuildLayout,
+  setExtra,
+  removeBuildServices,
   setTotal,
-})(BuildSwitch);
+})(BuildExtra);

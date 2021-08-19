@@ -4,6 +4,8 @@ import buildname from './buildname';
 import buildlayout from './layout';
 import buildswitch from './switch';
 import buildservice from './service';
+import buildextra from './extra';
+import total from './total';
 
 export default combineReducers({
   alert,
@@ -11,4 +13,6 @@ export default combineReducers({
   buildlayout,
   buildswitch,
   buildservice,
+  buildextra,
+  total,
 });

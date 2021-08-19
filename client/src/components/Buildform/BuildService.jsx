@@ -6,16 +6,28 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { setService } from '../../actions/service';
 import { removeBuildSwitch } from '../../actions/switch';
+import { setTotal, removeFromTotal } from '../../actions/total';
 
-const BuildService = ({ setService, buildswitch, removeBuildSwitch }) => {
+const BuildService = ({
+  setService,
+  buildswitch,
+  removeBuildSwitch,
+  total,
+  setTotal,
+  removeFromTotal,
+}) => {
   //STATE
   const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    checkForServices();
+  }, [services]);
 
   //METHODS
   const getServices = async () => {
     try {
       const response = await axios.get(
-        'http://localhost:5000/api/products/switch'
+        'http://localhost:5000/api/products/service'
       );
       setServices(response.data);
     } catch (error) {
@@ -31,6 +43,7 @@ const BuildService = ({ setService, buildswitch, removeBuildSwitch }) => {
 
   const handleChoice = (choice) => {
     setService(choice.name, choice.price);
+    setTotal(total, choice.price);
   };
 
   const goBack = () => {
@@ -44,7 +57,11 @@ const BuildService = ({ setService, buildswitch, removeBuildSwitch }) => {
       </div>
       <div>
         {services.map((service, index) => (
-          <div key={index} onClick={handleChoice(service)}>
+          <div
+            key={index}
+            onClick={() => {
+              handleChoice(service);
+            }}>
             <div className='layout-title'>
               <h4>{service.name}</h4>
             </div>
@@ -62,6 +79,10 @@ const BuildService = ({ setService, buildswitch, removeBuildSwitch }) => {
             </div>
           </div>
         ))}
+      </div>
+      <div className='total-price'>
+        <h3>Build Cost</h3>
+        <h3>$ {total} </h3>
       </div>
       <div>
         <button
@@ -82,8 +103,11 @@ BuildService.propTypes = {
 
 const mapStateToProps = (state) => ({
   buildswitch: state.buildswitch,
+  total: state.total,
 });
 
-export default connect(mapStateToProps, { setService, removeBuildSwitch })(
-  BuildService
-);
+export default connect(mapStateToProps, {
+  setService,
+  removeBuildSwitch,
+  setTotal,
+})(BuildService);

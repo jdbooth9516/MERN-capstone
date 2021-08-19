@@ -12,3 +12,9 @@ export const REMOVE_SWITCH = 'REMOVE_SWITCH';
 
 export const SET_SERVICE = 'SET_SERVICE';
 export const REMOVE_SERVICE = 'REMOVE_SERVICE';
+
+export const SET_EXTRA = 'SET_EXTRA';
+export const REMOVE_EXTRA = 'REMOVE_EXTRA';
+
+export const SET_TOTAL = 'SET_TOTAL';
+export const REMOVE_TOTAL = 'REMOVE_TOTAL';
