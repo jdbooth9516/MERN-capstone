@@ -7,12 +7,12 @@ export interface IShoppingcart {
 
 const ShoppingcartSchema = new Schema<IShoppingcart>({
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
-  build: { type: Array, required: true },
+  builds: { type: Array, required: true },
 });
 
-const shoppingCart = mongoose.model<IShoppingcart>(
+const ShoppingCart = mongoose.model<IShoppingcart>(
   'shopping',
   ShoppingcartSchema
 );
 
-export default shoppingCart;
+export default ShoppingCart;

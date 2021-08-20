@@ -1,6 +1,4 @@
 import express, { json, Request, Response } from 'express';
-import config from 'config';
-import auth from '../../middleware/auth';
 import { body, validationResult } from 'express-validator';
 import { IProduct } from '../../models/Product';
 

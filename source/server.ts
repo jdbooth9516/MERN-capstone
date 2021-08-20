@@ -2,7 +2,6 @@ import express from 'express';
 import connectDB from '../config/db';
 import cors from 'cors';
 
-
 const app = express();
 
 export function handleError(error: any, res: any) {
@@ -24,6 +23,7 @@ app.use('/api/paymentaccount', require('../routes/api/payment'));
 app.use('/api/cards', require('../routes/api/cards'));
 app.use('/api/products', require('../routes/api/products'));
 app.use('/api/build', require('../routes/api/build'));
+app.use('/api/cart', require('../routes/api/shoppingcart'));
 
 const PORT = process.env.PORT || 5000;
 

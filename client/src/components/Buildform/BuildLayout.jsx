@@ -58,7 +58,7 @@ const BuildLayout = ({
         <h2>Layouts</h2>
       </div>
 
-      <div className={`cards-container`}>
+      <div className='cards-container'>
         {layouts.map((layout, index) => (
           <div
             key={index}

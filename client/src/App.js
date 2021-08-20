@@ -4,27 +4,28 @@ import './scss/App.css';
 import NavBar from './components/Navbar/Navbar';
 import Registration from './components/Navbar/Registration';
 import Login from './components/Login/Login';
+import Information from './components/information/Information';
+import Buildhome from './components/Buildform/Buildhome';
+import Logout from './components/Navbar/Logout';
+import ShoppingCart from './components/Shoppincart/ShoppingCart';
+import Checkout from './components/Checkout/Checkout';
 
 // Redux
 import { Provider } from 'react-redux';
 import store from './store';
 import Alert from './components/Alerts/Alert';
-import Information from './components/information/Information';
-import Buildhome from './components/Buildform/Buildhome';
-import Logout from './components/Navbar/Logout';
 
+// Main component
 const App = () => {
   const [infoSwitch, setInfoSwitch] = useState(false);
   const [user, setUser] = useState('none');
 
   useEffect(() => {
     checkForUser();
-    console.log(user);
   }, [user]);
 
   const getUser = () => {
     let cookieCrumble = document.cookie.split('=');
-    console.log(cookieCrumble);
     const user = cookieCrumble[1];
     setUser(user);
   };
@@ -107,6 +108,11 @@ const App = () => {
               <Logout {...props} user={user} getUser={getUser} />
             )}
           />
+          <Route
+            path='/cart'
+            render={(props) => <ShoppingCart {...props} user={user} />}
+          />
+          <Route path='/checkout' component={Checkout} />
         </Switch>
       </div>
     </Provider>
