@@ -2,7 +2,6 @@ import express, { json, Request, Response } from 'express';
 import auth from '../../middleware/auth';
 import PaymentAccount, { IPaymentAccount } from '../../models/Paymentaccount';
 import { body, validationResult } from 'express-validator';
-import User from '../../models/User';
 
 const router = express.Router();
 
@@ -63,14 +62,14 @@ router.post(
   }
 );
 
-// ROUTE: get /api/paymentaccount/:user_id
+// ROUTE: get /api/paymentaccount
 // DESC:  Get payment account based off of the user
 // ACCESS: Private
-router.get('/:user_id', auth, async (req: Request, res: Response) => {
+router.get('/', auth, async (req: Request, res: Response) => {
   try {
     //params == the id from the url
     const paymentAccount = await PaymentAccount.findOne({
-      user: req.params.user_id,
+      user: req.user.id,
     }).populate('user', ['name']);
 
     if (!paymentAccount) {
