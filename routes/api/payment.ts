@@ -74,18 +74,17 @@ router.get('/', auth, async (req: Request, res: Response) => {
 
     if (!paymentAccount) {
       res.status(400).json({ msg: 'Payment Account not found' });
+    } else {
+      res.json(paymentAccount);
     }
-    res.json(paymentAccount);
   } catch (error) {
     console.error(error.message);
     //look to see if the id is invalid
     if (error.kind == 'ObjedctId') {
       return res.status(400).json({ msg: 'Payment Account not found' });
     }
-    res.status(500).send('server error');
-  } // Route: Delete api/profile
-  //DESC: Delete user and profile and post
-  //ACCESS: Private
+    res.status(500).json({ msg: 'server error' });
+  }
 });
 
 // Route: Delete api/paymentaccount

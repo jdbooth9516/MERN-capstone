@@ -3,6 +3,7 @@ import axios from 'axios';
 import jwt from 'jsonwebtoken';
 import useForm from '../useForm/useForm';
 import { Form, FormGroup, Label, Input } from 'reactstrap';
+import { setAlert } from '../../actions/alert';
 
 const Checkout = () => {
   //State
@@ -14,23 +15,24 @@ const Checkout = () => {
 
   useEffect(() => {
     checkForCart();
-  }, []);
+    console.log(payment);
+  }, [cart, payment]);
 
   let cookieCrumble = document.cookie.split('=');
-  const user = cookieCrumble[1];
-  const userId = jwt.decode(user);
+  const token = cookieCrumble[1];
+  const userId = jwt.decode(token);
 
   //Methods
 
   const getCart = async () => {
     try {
       const response = await axios.get(`http://localhost:5000/api/cart/user`, {
-        headers: { 'x-auth-token': user },
+        headers: { 'x-auth-token': token },
       });
       setCart(response.data);
-      console.log(response.data);
+      getPaymentAccount();
     } catch (error) {
-      console.error(error.message);
+      setAlert('No Payment Account found Please enter on below.');
     }
   };
 
@@ -38,7 +40,7 @@ const Checkout = () => {
     try {
       const response = await axios.get(
         'http://localhost:5000/api/paymentaccount',
-        { headers: { 'x-auth-token': user } }
+        { headers: { 'x-auth-token': token } }
       );
       setPayment(response.data);
       console.log(response.data);
@@ -49,7 +51,7 @@ const Checkout = () => {
 
   function createPaymentAccount(value) {
     const payload = {
-      user: user.id,
+      user: userId,
       address: value.address,
       city: value.city,
       state: value.state,
@@ -58,8 +60,9 @@ const Checkout = () => {
     async function addPaymentToDatabase() {
       try {
         await axios.post('http://localhost:5000/api/paymentaccount', payload, {
-          headers: { 'x-auth-token': user },
+          headers: { 'x-auth-token': token },
         });
+        getPaymentAccount();
       } catch (error) {
         console.error(error.message);
       }
@@ -84,71 +87,74 @@ const Checkout = () => {
           </div>
         ))}
         <div>
-          <div>
-            <button
-              onClick={() => {
-                getPaymentAccount();
-              }}>
-              Use Previous payment
-            </button>
-          </div>
           {payment.length === 0 && (
-            <div className="form-container">
+            <div className='form-container'>
               <Form>
                 <FormGroup>
-                  <Label for="address">address</Label>
+                  <Label for='address'>address</Label>
                   <Input
-                    type="text"
-                    name="address"
-                    id="address"
-                    placeholder="address"
-                    defaultValue=""
+                    type='text'
+                    name='address'
+                    id='address'
+                    placeholder='address'
+                    defaultValue=''
                     onChange={handleChange}
                     value={values.address}
                   />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="city">city</Label>
+                  <Label for='city'>city</Label>
                   <Input
-                    type="text"
-                    name="city"
-                    id="city"
-                    placeholder="city"
-                    defaultValue=""
+                    type='text'
+                    name='city'
+                    id='city'
+                    placeholder='city'
+                    defaultValue=''
                     onChange={handleChange}
                     value={values.city}
                   />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="state">state</Label>
+                  <Label for='state'>state</Label>
                   <Input
-                    type="text"
-                    name="state"
-                    id="state"
-                    placeholder="state"
-                    defaultValue=""
+                    type='text'
+                    name='state'
+                    id='state'
+                    placeholder='state'
+                    defaultValue=''
                     onChange={handleChange}
                     value={values.state}
                   />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="zip">zip</Label>
+                  <Label for='zip'>zip</Label>
                   <Input
-                    type="text"
-                    name="zip"
-                    id="zip"
-                    placeholder="zip"
-                    defaultValue=""
+                    type='text'
+                    name='zip'
+                    id='zip'
+                    placeholder='zip'
+                    defaultValue=''
                     onChange={handleChange}
                     value={values.zip}
                   />
                 </FormGroup>
-                <button onClick={handleSubmit} className="reg-submit">
+                <button onClick={handleSubmit} className='reg-submit'>
                   Login
                 </button>
               </Form>
             </div>
           )}
+          {/* Shows a payment account if one is already present*/}
+          {payment && (
+            <div>
+              <h3>Current Payment Account</h3>
+              <h5> {payment.address}</h5>
+              <h5> {payment.city}</h5>
+              <h5> {payment.state}</h5>
+              <h5> {payment.zip}</h5>
+            </div>
+          )}
+
         </div>
       </div>
     </div>
