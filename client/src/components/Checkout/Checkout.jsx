@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import ReactModal from 'react-modal';
 import axios from 'axios';
 import jwt from 'jsonwebtoken';
 import useForm from '../useForm/useForm';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
+import CheckoutForm from './CheckoutForm';
 import { Form, FormGroup, Label, Input } from 'reactstrap';
 import { setAlert } from '../../actions/alert';
+
+const promise = loadStripe(
+  'pk_test_51J09k7IegiEVwxhXQzJAvrbfhn0KdEmpKypJglBe5AUr2q51UH2kTbJBPXMRRpMi4BV1CAfHFYXuaRjlkVpzWbza006lO7p2Rg'
+);
 
 const Checkout = () => {
   //State
@@ -12,10 +20,10 @@ const Checkout = () => {
   });
   const [cart, setCart] = useState([]);
   const [payment, setPayment] = useState([]);
+  const [cardForm, setCardForm] = useState(false);
 
   useEffect(() => {
     checkForCart();
-    console.log(payment);
   }, [cart, payment]);
 
   let cookieCrumble = document.cookie.split('=');
@@ -147,14 +155,32 @@ const Checkout = () => {
           {/* Shows a payment account if one is already present*/}
           {payment && (
             <div>
-              <h3>Current Payment Account</h3>
-              <h5> {payment.address}</h5>
-              <h5> {payment.city}</h5>
-              <h5> {payment.state}</h5>
-              <h5> {payment.zip}</h5>
+              <div>
+                <h3>Current Payment Account</h3>
+                <h5> {payment.address}</h5>
+                <h5> {payment.city}</h5>
+                <h5> {payment.state}</h5>
+                <h5> {payment.zip}</h5>
+              </div>
+              <div>
+                <button
+                  onClick={() => {
+                    setCardForm(!cardForm);
+                  }}>
+                  Checkout
+                </button>
+              </div>
+              <ReactModal isOpen={cardForm}>
+                <Elements stripe={promise}>
+                  <CheckoutForm
+                    cart={cart[0]}
+                    setCardForm={setCardForm}
+                    user={userId.user}
+                  />
+                </Elements>
+              </ReactModal>
             </div>
           )}
-
         </div>
       </div>
     </div>

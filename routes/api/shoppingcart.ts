@@ -1,7 +1,6 @@
 import express, { json, Request, Response } from 'express';
 import {
   body,
-  buildSanitizeFunction,
   validationResult,
 } from 'express-validator';
 import { IShoppingcart } from '../../models/Shoppingcart';

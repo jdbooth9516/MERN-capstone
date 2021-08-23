@@ -24,6 +24,7 @@ app.use('/api/cards', require('../routes/api/cards'));
 app.use('/api/products', require('../routes/api/products'));
 app.use('/api/build', require('../routes/api/build'));
 app.use('/api/cart', require('../routes/api/shoppingcart'));
+app.use('/api/checkout', require('../routes/api/checkout'));
 
 const PORT = process.env.PORT || 5000;
 
