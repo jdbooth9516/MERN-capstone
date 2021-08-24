@@ -14,6 +14,7 @@ import Checkout from './components/Checkout/Checkout';
 import { Provider } from 'react-redux';
 import store from './store';
 import Alert from './components/Alerts/Alert';
+import EmployeePortal from './components/Employee/EmployeePortal';
 
 // Main component
 const App = () => {
@@ -113,6 +114,7 @@ const App = () => {
             render={(props) => <ShoppingCart {...props} user={user} />}
           />
           <Route path='/checkout' component={Checkout} />
+          <Route path='/portal' component={EmployeePortal} />
         </Switch>
       </div>
     </Provider>
