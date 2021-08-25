@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React from 'react';
 import axios from 'axios';
 
 // redux import
@@ -21,7 +21,7 @@ const ConfirmBuild = ({
   const addBuildToDatabase = async () => {
     console.log(user);
     const payload = {
-      "buildname": buildnames[0].msg,
+      buildname: buildnames[0].msg,
       products: [
         buildlayouts[0].msg,
         buildswitch[0].msg,
@@ -50,7 +50,7 @@ const ConfirmBuild = ({
   };
 
   return (
-    <div className='confirmbuild-cont'>
+    <div className="confirmbuild-cont">
       <div>
         <h2>Confirm Build</h2>
       </div>
@@ -103,7 +103,7 @@ const ConfirmBuild = ({
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   buildnames: state.buildname,
   buildlayouts: state.buildlayout,
   buildswitch: state.buildswitch,

@@ -28,17 +28,15 @@ const ShoppingCart = () => {
     }
   };
 
-  const createCart = async (build) => {
+  const createCart = async build => {
     const payload = {
       user: build.user,
       builds: build,
     };
     try {
-      const response = await axios.post(
-        'http://localhost:5000/api/cart',
-        payload,
-        { headers: { 'x-auth-token': user } }
-      );
+      await axios.post('http://localhost:5000/api/cart', payload, {
+        headers: { 'x-auth-token': user },
+      });
     } catch (error) {}
   };
 
@@ -84,9 +82,7 @@ const ShoppingCart = () => {
       ))}
       <div>
         <Link to="/checkout">
-          <button>
-            Go to Checkout
-          </button>
+          <button>Go to Checkout</button>
         </Link>
       </div>
     </div>

@@ -21,10 +21,7 @@ const Registration = ({ history, setAlert }) => {
     };
     async function addUserToDataBase(payload) {
       try {
-        const response = await axios.post(
-          'http://localhost:5000/api/users',
-          payload
-        );
+        await axios.post('http://localhost:5000/api/users', payload);
         history.push('/login');
       } catch (error) {
         console.error(error.message);

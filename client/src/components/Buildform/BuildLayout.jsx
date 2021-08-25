@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { setLayout } from '../../actions/layout';
 import { removeBuildName } from '../../actions/buildname';
-import { setTotal, removeFromTotal } from '../../actions/total';
+import { setTotal } from '../../actions/total';
 
 const BuildLayout = ({
   setLayout,

@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-const Logout = ({ history, getUser }) => {
+const Logout = () => {
   const cookie = 'jwt=none; path=/;';
   document.cookie = cookie;
 

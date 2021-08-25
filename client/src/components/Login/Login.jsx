@@ -16,7 +16,7 @@ const Login = props => {
           'http://localhost:5000/api/login',
           values
         );
-        const cookie = 'jwt=' + `${response.data['token']}; path=/`;
+        const cookie = `jwt=${response.data['token']}; path=/`;
 
         console.log(cookie);
         document.cookie = cookie;
