@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './Information.css';
+// import './Information.css';
 
 const Information = () => {
   const mainRef = useRef(null);

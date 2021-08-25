@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 import './scss/App.css';
+
+//Componentes
+import Buildhelper from './components/Buildhelper/Buildhelper';
 import NavBar from './components/Navbar/Navbar';
 import Registration from './components/Navbar/Registration';
 import Login from './components/Login/Login';
@@ -9,12 +12,16 @@ import Buildhome from './components/Buildform/Buildhome';
 import Logout from './components/Navbar/Logout';
 import ShoppingCart from './components/Shoppincart/ShoppingCart';
 import Checkout from './components/Checkout/Checkout';
+import EmployeePortal from './components/Employee/EmployeePortal';
+import LayoutUpdate from './components/Employee/update/LayoutUpdate';
+import SwitchUpdate from './components/Employee/update/SwitchUpdate';
+import ServiceUpdate from './components/Employee/update/ServiceUpdate';
+import ExtraUpdate from './components/Employee/update/ExtraUpdate';
 
 // Redux
 import { Provider } from 'react-redux';
 import store from './store';
 import Alert from './components/Alerts/Alert';
-import EmployeePortal from './components/Employee/EmployeePortal';
 
 // Main component
 const App = () => {
@@ -38,83 +45,88 @@ const App = () => {
   };
   return (
     <Provider store={store}>
-      <div className='App'>
+      <div className="App">
         <NavBar user={user} />
         <Alert />
         {window.location.pathname === '/' && (
           <div>
-            <div className='main-body'>
-              <h1 className='welcome-title'>Welcome to customKeys</h1>
-              <h3 className='welcome-description'>
+            <div className="main-body">
+              <h1 className="welcome-title">Welcome to customKeys</h1>
+              <h3 className="welcome-description">
                 Find and make your perfect custom mechanical keyboard.
               </h3>
-              <div className='btn-holder'>
-                <div className='info-card'>
+              <div className="btn-holder">
+                <div className="info-card">
                   <h4>Need To Learn More</h4>
                   <p>
                     Click on the button below to learn more about what makes up
                     a custom keyboard
                   </p>
                   <button
-                    className='info-btn'
+                    className="info-btn"
                     onClick={() => setInfoSwitch(!infoSwitch)}>
                     Info
                   </button>
                 </div>
 
-                <div className='info-card'>
+                <div className="info-card">
                   <h4>Ready to Build</h4>
                   <p>
                     Know what you want? Click here to start building your custom
                     keyboard.
                   </p>
                   <button
-                    className='build-btn'
+                    className="build-btn"
                     onClick={() => (window.location.href = '/build')}>
                     Build It
                   </button>
                 </div>
-                <div className='info-card'>
+                <div className="info-card">
                   <h4>Need Help</h4>
                   <p>
                     Want to see some recomendations? Click below to see a
                     recomendation based on your preferances.
                   </p>
                   <button
-                    className='rec-btn'
+                    className="rec-btn"
                     onClick={() => (window.location.href = '/buildhelper')}>
                     Recomendations
                   </button>
                 </div>
               </div>
             </div>
-            <div className='info-section'>
+            <div className="info-section">
               {infoSwitch ? <Information /> : null}
             </div>
           </div>
         )}
         <Switch>
-          <Route path='/register' component={Registration} />
+          <Route path="/register" component={Registration} />
           <Route
-            path='/login/'
-            render={(props) => <Login {...props} getUser={getUser} />}
+            path="/login/"
+            render={props => <Login {...props} getUser={getUser} />}
           />
           <Route
-            path='/build'
-            render={(props) => <Buildhome {...props} user={user} />}
+            path="/build"
+            render={props => <Buildhome {...props} user={user} />}
           />
           <Route
-            path='/logout'
-            render={(props) => (
+            path="/logout"
+            render={props => (
               <Logout {...props} user={user} getUser={getUser} />
             )}
           />
           <Route
-            path='/cart'
-            render={(props) => <ShoppingCart {...props} user={user} />}
+            path="/cart"
+            render={props => <ShoppingCart {...props} user={user} />}
           />
-          <Route path='/checkout' component={Checkout} />
-          <Route path='/portal' component={EmployeePortal} />
+          <Route path="/buildhelper" component={Buildhelper} />
+          <Route path="/checkout" component={Checkout} />
+          <Route path="/portal" component={EmployeePortal} />
+          <Route path="/layoutupdate" component={LayoutUpdate} />
+          <Route path="/switchupdate" component={SwitchUpdate} />
+          <Route path="/serviceupdate" component={ServiceUpdate} />
+          <Route path="/extraupdate" component={ExtraUpdate} />
         </Switch>
       </div>
     </Provider>

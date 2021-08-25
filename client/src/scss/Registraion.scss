@@ -1,0 +1,13 @@
+.form-body {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 15vh;
+  max-width: 40vw;
+  max-height: 50vh;
+}

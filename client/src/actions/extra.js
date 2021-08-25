@@ -1,7 +1,7 @@
-import { REMOVE_EXTRA, REMOVE_SWITCH, SET_EXTRA } from './types';
+import { REMOVE_EXTRA, SET_EXTRA } from './types';
 import * as uuid from 'uuid';
 
-export const setExtra = (msg, price) => (dispatch) => {
+export const setExtra = (msg, price) => dispatch => {
   const id = uuid.v4();
   dispatch({
     type: SET_EXTRA,
@@ -9,7 +9,7 @@ export const setExtra = (msg, price) => (dispatch) => {
   });
 };
 
-export const removeBuildExtra = (id) => (dispatch) => {
+export const removeBuildExtra = id => dispatch => {
   dispatch({
     type: REMOVE_EXTRA,
     payload: id,

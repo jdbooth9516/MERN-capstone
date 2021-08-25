@@ -62,10 +62,10 @@ const EmployeePortal = () => {
           <Link to="/SwitchUpdate">
             <button className="option-btn">Switches</button>
           </Link>
-          <Link to="/ServicesUpdate">
+          <Link to="/ServiceUpdate">
             <button className="option-btn">Services</button>
           </Link>
-          <Link to="/ExtrasUpdate">
+          <Link to="/ExtraUpdate">
             <button className="option-btn">Extras</button>
           </Link>
         </div>

@@ -12,13 +12,7 @@ const router = express.Router();
 
 router.post(
   '/',
-  [
-    body('name', 'Product Name is required').not().isEmpty(),
-    body('catagory', 'Product catagory is required').not().isEmpty(),
-    body('shortdesc', 'Product shortdesc is required').not().isEmpty(),
-    body('longdesc', 'Product longdesc is required').not().isEmpty(),
-    body('price', 'Product Price is required').not().isEmpty(),
-  ],
+  [body('name', 'Product Name is required').not().isEmpty()],
   async (req: Request, res: Response) => {
     // check to see if the validator has and errors
     const errors = validationResult(req);
@@ -39,7 +33,18 @@ router.post(
     if (price) productFields.price = price;
 
     try {
-      const product = new Product(productFields);
+      let product = await Product.findOne({ name: req.body.name });
+      // update the product if it already exist
+      if (product) {
+        product = await Product.findOneAndUpdate(
+          { name: req.body.name },
+          { $set: productFields },
+          { new: true }
+        );
+        return res.json(product);
+      }
+
+      product = new Product(productFields);
 
       await product.save();
       res.json(product);

@@ -166,7 +166,8 @@ const Checkout = () => {
                 <button
                   onClick={() => {
                     setCardForm(!cardForm);
-                  }}>
+                  }}
+                  className='primary-button'>
                   Checkout
                 </button>
               </div>

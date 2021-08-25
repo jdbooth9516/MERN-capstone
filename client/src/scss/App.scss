@@ -13,7 +13,7 @@ $light-text: aliceblue;
   background-blend-mode: normal;
   color: $light-text;
   text-align: center;
-  height: 90vh;
+  height: 100vh;
 }
 
 .main-body {
@@ -43,6 +43,7 @@ $light-text: aliceblue;
   border: 1px solid rgb(0, 153, 255);
   color: rgb(0, 153, 255);
   margin: 2vh 1vw;
+  border-radius: 4px;
 }
 
 .build-btn {
@@ -50,6 +51,7 @@ $light-text: aliceblue;
   border: 1px solid rgb(157, 253, 79);
   color: rgb(157, 253, 79);
   margin: 2vh 1vw;
+  border-radius: 4px;
 }
 
 .rec-btn {
@@ -57,4 +59,115 @@ $light-text: aliceblue;
   border: 1px solid rgb(242, 253, 79);
   color: rgb(242, 253, 79);
   margin: 2vh 1vw;
+  border-radius: 4px;
+}
+
+// imformation sections
+.information-container {
+  background-color: rgb(39, 39, 39);
+  color: aliceblue;
+  padding-top: 5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+}
+.video-player {
+  margin-top: 2vh;
+}
+
+.category-btn-1 {
+  background-color: rgba(255, 255, 255, 0);
+  border: 0px;
+  color: rgb(0, 153, 255);
+  margin: 2vh 1vw;
+}
+.category-btn-2 {
+  background-color: rgba(255, 255, 255, 0);
+  border: 0px;
+  color: rgb(242, 253, 79);
+  margin: 2vh 1vw;
+}
+.category-btn-3 {
+  background-color: rgba(255, 255, 255, 0);
+  border: 0px;
+  color: rgb(157, 253, 79);
+  margin: 2vh 1vw;
+}
+.category-btn-4 {
+  background-color: rgba(255, 255, 255, 0);
+  border: 0px;
+  color: rgb(253, 44, 90);
+  margin: 2vh 1vw;
+}
+
+.info-sections {
+  width: 97vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.info-card-sections {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.info-card {
+  flex: 1 1 25%;
+  background-color: rgba(107, 114, 119, 0.651);
+  color: rgb(207, 206, 206);
+  border-radius: 3px;
+  margin: 1vh 1vw;
+}
+
+.answer-container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 15vh;
+  justify-content: space-around;
+}
+
+// order area
+.Layout-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2em;
+}
+
+.cards-container {
+  margin-top: 10vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.layout-card {
+  flex-basis: 30%;
+  background-color: rgba(240, 248, 255, 0.733);
+  color: rgb(39, 39, 39);
+  border-radius: 3px;
+  margin: 1vh 1vw;
+  padding: 0.5em 1em;
+}
+
+.total-price {
+  margin: 2em;
+  padding: 2em;
+}
+
+.goback-btn {
+  font-size: 1.3em;
+  font-weight: 600;
+  color: rgb(255, 45, 90);
+  background-color: #39393900;
+  border: 2px rgb(255, 0, 106) solid;
+  border-radius: 4px;
+  margin: 2em;
+  padding: 0.3em 0.7em;
 }

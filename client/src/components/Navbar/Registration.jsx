@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alert';
 import PropTypes from 'prop-types';
 
-import '../../scss/Registration.css';
+import '../../scss/Registraion.css';
 
 const Registration = ({ history, setAlert }) => {
   const { values, handleChange, handleSubmit } = useForm(() => {
@@ -40,58 +40,58 @@ const Registration = ({ history, setAlert }) => {
   }
 
   return (
-    <div>
-      <div className='form-container'>
+    <div className="form-body">
+      <div className="form-container">
         <Form>
           <FormGroup>
-            <Label for='name'>Full Name</Label>
+            <Label for="name">Full Name</Label>
             <Input
-              type='text'
-              name='name'
-              id='name'
-              placeholder='Full Name'
-              defaultValue=''
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Full Name"
+              defaultValue=""
               onChange={handleChange}
               value={values.name}
             />
           </FormGroup>
           <FormGroup>
-            <Label for='email'>email</Label>
+            <Label for="email">Email</Label>
             <Input
-              type='text'
-              name='email'
-              id='email'
-              placeholder='email'
-              defaultValue=''
+              type="text"
+              name="email"
+              id="email"
+              placeholder="email"
+              defaultValue=""
               onChange={handleChange}
               value={values.email}
             />
           </FormGroup>
           <FormGroup>
-            <Label for='password'>Password</Label>
+            <Label for="password">Password</Label>
             <Input
-              type='password'
-              name='password'
-              id='password'
-              placeholder='Create A Password'
-              defaultValue=''
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Create A Password"
+              defaultValue=""
               onChange={handleChange}
               value={values.password}
             />
           </FormGroup>
           <FormGroup>
-            <Label for='password2'>Re-enter Password</Label>
+            <Label for="password2">Re-enter Password</Label>
             <Input
-              type='password'
-              name='password2'
-              id='password2'
-              placeholder='Create A Password'
-              defaultValue=''
+              type="password"
+              name="password2"
+              id="password2"
+              placeholder="Create A Password"
+              defaultValue=""
               onChange={handleChange}
               value={values.password2}
             />
           </FormGroup>
-          <button onClick={handleSubmit} className='reg-submit'>
+          <button onClick={handleSubmit} className="build-btn">
             Submit
           </button>
         </Form>

@@ -42,7 +42,7 @@ const BuildSwitch = ({
     }
   };
 
-  const handleChoice = (choice) => {
+  const handleChoice = choice => {
     setSwitch(choice.name, choice.price);
     setTotal(total, choice.price);
   };
@@ -58,39 +58,40 @@ const BuildSwitch = ({
         <h2>Switches</h2>
       </div>
 
-      <div>
+      <div className="cards-container">
         {switches.map((kswitches, index) => (
           <div
+            className="layout-card"
             key={index}
             onClick={() => {
               handleChoice(kswitches);
             }}>
-            <div className='layout-title'>
+            <div className="layout-title">
               <h4>{kswitches.name}</h4>
             </div>
-            <div className='layout-body'>
+            <div className="layout-body">
               <p>{kswitches.shortdesc}</p>
             </div>
 
-            <div className='layout-hidden' id={`hidding-${index}`}>
+            <div className="layout-hidden" id={`hidding-${index}`}>
               <h6>More Information:</h6>
               <p>{kswitches.longdesc}</p>
             </div>
 
-            <div className='layout-price'>
+            <div className="layout-price">
               <h5>$ {kswitches.price}</h5>
             </div>
           </div>
         ))}
       </div>
-      <div className='total-price'>
+      <div className="total-price">
         <h3>Build Cost</h3>
         <h3>$ {total} </h3>
       </div>
 
       <div>
         <button
-          className='goback-btn'
+          className="goback-btn"
           onClick={() => {
             goBack();
           }}>
@@ -105,7 +106,7 @@ BuildSwitch.propTypes = {
   setSwitch: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   buildlayout: state.buildlayout,
   total: state.total,
 });

@@ -4,9 +4,7 @@ import React from 'react';
 import { Form, FormGroup, Label, Input } from 'reactstrap';
 import useForm from '../useForm/useForm';
 
-import './Login.css';
-
-const Login = (props) => {
+const Login = props => {
   const { values, handleChange, handleSubmit } = useForm(() => {
     loginUser(values);
   });
@@ -32,34 +30,34 @@ const Login = (props) => {
   }
 
   return (
-    <div>
-      <div className='form-container'>
+    <div className="form-body">
+      <div className="form-container">
         <Form>
           <FormGroup>
-            <Label for='email'>email</Label>
+            <Label for="email">email</Label>
             <Input
-              type='text'
-              name='email'
-              id='email'
-              placeholder='email'
-              defaultValue=''
+              type="text"
+              name="email"
+              id="email"
+              placeholder="email"
+              defaultValue=""
               onChange={handleChange}
               value={values.email}
             />
           </FormGroup>
           <FormGroup>
-            <Label for='password'>Password</Label>
+            <Label for="password">Password</Label>
             <Input
-              type='password'
-              name='password'
-              id='password'
-              placeholder='Password'
-              defaultValue=''
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password"
+              defaultValue=""
               onChange={handleChange}
               value={values.password}
             />
           </FormGroup>
-          <button onClick={handleSubmit} className='reg-submit'>
+          <button onClick={handleSubmit} className="build-btn">
             Login
           </button>
         </Form>

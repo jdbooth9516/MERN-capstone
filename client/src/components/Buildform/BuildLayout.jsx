@@ -41,7 +41,7 @@ const BuildLayout = ({
     }
   };
 
-  const handleChoice = (choice) => {
+  const handleChoice = choice => {
     setLayout(choice.name, choice.price);
     setTotal(total, choice.price);
   };
@@ -58,39 +58,40 @@ const BuildLayout = ({
         <h2>Layouts</h2>
       </div>
 
-      <div className='cards-container'>
+      <div className="cards-container">
         {layouts.map((layout, index) => (
           <div
+            className="layout-card"
             key={index}
             onClick={() => {
               handleChoice(layout);
             }}>
-            <div className='layout-title'>
+            <div className="layout-title">
               <h4>{layout.name}</h4>
             </div>
-            <div className='layout-body'>
+            <div className="layout-body">
               <p>{layout.shortdesc}</p>
             </div>
 
-            <div className='layout-hidden' id={`hidding-${index}`}>
+            <div className="layout-hidden" id={`hidding-${index}`}>
               <h6>More Information:</h6>
               <p>{layout.longdesc}</p>
             </div>
 
-            <div className='layout-price'>
+            <div className="layout-price">
               <h5>$ {layout.price}</h5>
             </div>
           </div>
         ))}
       </div>
-      <div className='total-price'>
+      <div className="total-price">
         <h3>Build Cost</h3>
         <h3>$ {total} </h3>
       </div>
 
       <div>
         <button
-          className='goback-btn'
+          className="goback-btn"
           onClick={() => {
             goBack();
           }}>
@@ -105,7 +106,7 @@ BuildLayout.propTypes = {
   setLayout: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   buildnames: state.buildname,
   total: state.total,
 });
