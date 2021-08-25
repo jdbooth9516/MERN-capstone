@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import LayoutChart from './charts/LayoutChart';
 import SwitchChart from './charts/SwitchChart';
+import ServiceChart from './charts/ServiceChart';
+import ExtrasChart from './charts/ExtrasChart';
 import { Link } from 'react-router-dom';
 
 const EmployeePortal = () => {
@@ -37,33 +39,37 @@ const EmployeePortal = () => {
           <div>
             <SwitchChart />
           </div>
-          <div>{/* <ServicesChart builds={builds} /> */}</div>
-          <div>{/* <ExtrasChart builds={builds} /> */}</div>
+          <div>
+            <ServiceChart />
+          </div>
+          <div>
+            <ExtrasChart />
+          </div>
         </div>
       );
     }, 500);
   };
 
   return (
-    <div className='employee'>
+    <div className="employee">
       <h3>Employee Portal</h3>
-      <div className='portal-container'>
-        <div className='employee-options'>
+      <div className="portal-container">
+        <div className="employee-options">
           <h5>Product Options</h5>
-          <Link to='/LayoutUpdate'>
-            <button className='option-btn'>Layouts</button>
+          <Link to="/LayoutUpdate">
+            <button className="option-btn">Layouts</button>
           </Link>
-          <Link to='/SwitchUpdate'>
-            <button className='option-btn'>Switches</button>
+          <Link to="/SwitchUpdate">
+            <button className="option-btn">Switches</button>
           </Link>
-          <Link to='/ServicesUpdate'>
-            <button className='option-btn'>Services</button>
+          <Link to="/ServicesUpdate">
+            <button className="option-btn">Services</button>
           </Link>
-          <Link to='/ExtrasUpdate'>
-            <button className='option-btn'>Extras</button>
+          <Link to="/ExtrasUpdate">
+            <button className="option-btn">Extras</button>
           </Link>
         </div>
-        <div className='sales-container'>{chartsVis}</div>
+        <div className="sales-container">{chartsVis}</div>
       </div>
     </div>
   );

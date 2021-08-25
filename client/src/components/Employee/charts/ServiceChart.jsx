@@ -2,16 +2,15 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Bar } from 'react-chartjs-2';
 
-const SwitchChart = ({}) => {
-  const [blues, setBlues] = useState(0);
-  const [reds, setReds] = useState(0);
-  const [browns, setBrowns] = useState(0);
-
+const ServiceChart = () => {
   const [builds, setBuilds] = useState([]);
+  const [switchLube, setSwitchLube] = useState(0);
+  const [stabalizerLube, setStabalizerLube] = useState(0);
+  const [switchFilm, setSwitchFilm] = useState(0);
 
-  let newblues = 0;
-  let newreds = 0;
-  let newbrowns = 0;
+  let newswitch = 0;
+  let newstabs = 0;
+  let newfilm = 0;
 
   useEffect(() => {
     checkForBuilds();
@@ -27,22 +26,22 @@ const SwitchChart = ({}) => {
     if (builds.length === 0) {
       getAllBuilds();
     } else {
-      pullLayouts();
+      pullServices();
     }
   };
 
-  const pullLayouts = () => {
+  const pullServices = () => {
     builds.forEach(build => {
       console.log(build);
-      if (build.products[1] === 'Blue Switches ') {
-        newblues += 1;
-        setBlues(newblues);
-      } else if (build.products[1] === 'Red Switches') {
-        newreds += 1;
-        setReds(newreds);
-      } else if (build.products[1] === 'Brown Switches') {
-        newbrowns += 1;
-        setBrowns(newbrowns);
+      if (build.products[2] === 'Switch Lube') {
+        newswitch += 1;
+        setSwitchLube(newswitch);
+      } else if (build.products[2] === 'Stabalizer Lube') {
+        newstabs += 1;
+        setStabalizerLube(newstabs);
+      } else if (build.products[2] === 'Switch Film') {
+        newfilm += 1;
+        setSwitchFilm(newfilm);
       }
     });
   };
@@ -52,11 +51,11 @@ const SwitchChart = ({}) => {
       <Bar
         type="bar"
         data={{
-          labels: ['Blue Switchs', 'Red Switches', 'Brown Switches'],
+          labels: ['Switch Lube', 'Stabalizer Lube', 'Switch Film'],
           datasets: [
             {
-              label: 'Switches',
-              data: [blues, reds, browns],
+              label: 'Services',
+              data: [switchLube, stabalizerLube, switchFilm],
               backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -81,4 +80,4 @@ const SwitchChart = ({}) => {
   );
 };
 
-export default SwitchChart;
+export default ServiceChart;

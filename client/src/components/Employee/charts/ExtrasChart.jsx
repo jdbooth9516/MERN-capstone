@@ -2,16 +2,15 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Bar } from 'react-chartjs-2';
 
-const SwitchChart = ({}) => {
-  const [blues, setBlues] = useState(0);
-  const [reds, setReds] = useState(0);
-  const [browns, setBrowns] = useState(0);
-
+const ExtrasChart = () => {
+  const [hoodie, setHoodie] = useState(0);
+  const [mousepad, setMouspad] = useState(0);
+  const [rgb, setRgb] = useState(0);
   const [builds, setBuilds] = useState([]);
 
-  let newblues = 0;
-  let newreds = 0;
-  let newbrowns = 0;
+  let newhoodie = 0;
+  let newmousepad = 0;
+  let newrgb = 0;
 
   useEffect(() => {
     checkForBuilds();
@@ -27,22 +26,21 @@ const SwitchChart = ({}) => {
     if (builds.length === 0) {
       getAllBuilds();
     } else {
-      pullLayouts();
+      pullExtras();
     }
   };
 
-  const pullLayouts = () => {
+  const pullExtras = () => {
     builds.forEach(build => {
-      console.log(build);
-      if (build.products[1] === 'Blue Switches ') {
-        newblues += 1;
-        setBlues(newblues);
-      } else if (build.products[1] === 'Red Switches') {
-        newreds += 1;
-        setReds(newreds);
-      } else if (build.products[1] === 'Brown Switches') {
-        newbrowns += 1;
-        setBrowns(newbrowns);
+      if (build.products[3] === 'XL mousepad') {
+        newmousepad += 1;
+        setMouspad(newmousepad);
+      } else if (build.products[3] === 'Hoodie') {
+        newhoodie += 1;
+        setHoodie(newhoodie);
+      } else if (build.products[3] === 'RGB Lights') {
+        newrgb += 1;
+        setRgb(newrgb);
       }
     });
   };
@@ -52,11 +50,11 @@ const SwitchChart = ({}) => {
       <Bar
         type="bar"
         data={{
-          labels: ['Blue Switchs', 'Red Switches', 'Brown Switches'],
+          labels: ['Hoodie', 'Xl Mousepad', 'RGB'],
           datasets: [
             {
-              label: 'Switches',
-              data: [blues, reds, browns],
+              label: 'Extras',
+              data: [hoodie, mousepad, rgb],
               backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -81,4 +79,4 @@ const SwitchChart = ({}) => {
   );
 };
 
-export default SwitchChart;
+export default ExtrasChart;
