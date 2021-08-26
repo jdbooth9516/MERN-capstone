@@ -86,14 +86,17 @@ const Checkout = () => {
 
   return (
     <div>
-      <h6>checkout</h6>
-      <div>
-        {cart.map((item, index) => (
-          <div key={index}>
-            <h6>{item.builds[0].buildname}</h6>
-            <h6> $ {item.builds[0].totalprice}</h6>
-          </div>
-        ))}
+      <h3>Checkout</h3>
+      <div className='checkout-container'>
+        <div className='cards-container'>
+          {cart.map((item, index) => (
+            <div className='layout-card' key={index}>
+              <h3>Cart:</h3>
+              <h5>{item.builds[0].buildname}</h5>
+              <h5> $ {item.builds[0].totalprice}</h5>
+            </div>
+          ))}
+        </div>
         <div>
           {payment.length === 0 && (
             <div className='form-container'>
@@ -154,24 +157,37 @@ const Checkout = () => {
           )}
           {/* Shows a payment account if one is already present*/}
           {payment && (
-            <div>
-              <div>
+            <div className='cards-container'>
+              <div className='layout-card'>
                 <h3>Current Payment Account</h3>
                 <h5> {payment.address}</h5>
-                <h5> {payment.city}</h5>
-                <h5> {payment.state}</h5>
-                <h5> {payment.zip}</h5>
+                <h5>
+                  {payment.city}, {payment.state} {payment.zip}
+                </h5>
               </div>
               <div>
                 <button
                   onClick={() => {
                     setCardForm(!cardForm);
                   }}
-                  className='primary-button'>
+                  className='build-btn'>
                   Checkout
                 </button>
               </div>
-              <ReactModal isOpen={cardForm}>
+              <ReactModal
+                isOpen={cardForm}
+                style={{
+                  overlay: {
+                    backgroundColor: 'rgba(107, 114, 119, 0.651)',
+                  },
+                  content: {
+                    maxHeight: '20vh',
+                    maxWidth: '20vw',
+                    top: '35vh',
+                    left: '40vw',
+                    backgroundColor: '#333',
+                  },
+                }}>
                 <Elements stripe={promise}>
                   <CheckoutForm
                     cart={cart[0]}

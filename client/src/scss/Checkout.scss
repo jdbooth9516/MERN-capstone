@@ -126,6 +126,14 @@ input {
   animation: loading 2s infinite ease;
 }
 
+.checkout-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 5vh 5vw;
+}
+
+
 @keyframes loading {
   0% {
     -webkit-transform: rotate(0deg);

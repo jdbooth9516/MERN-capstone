@@ -116,6 +116,13 @@
   margin: 2vh 1vw;
 }
 
+.close-btn {
+  background-color: rgba(255, 255, 255, 0);
+  border: 0px;
+  color: #fd2c5a;
+  margin-bottom: 10px;
+}
+
 .info-sections {
   width: 97vh;
   display: -webkit-box;

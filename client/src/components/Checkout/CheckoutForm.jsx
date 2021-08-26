@@ -80,27 +80,39 @@ export default function CheckoutForm(props) {
   };
 
   return (
-    <form id='payment-form' onSubmit={handleSubmit}>
-      <CardElement
-        id='card-element'
-        options={cardStyle}
-        onChange={handleChange}
-      />
-      <button disabled={processing || disabled || succeeded} id='submit'>
-        <span id='button-text'>
-          {processing ? (
-            <div className='spinner' id='spinner'></div>
-          ) : (
-            'Pay now'
-          )}
-        </span>
+    <div className=' card-entry'>
+      <button
+        className='close-btn'
+        onClick={() => {
+          props.setCardForm(false);
+        }}>
+        x
       </button>
-      {/* Show any error that happens when processing the payment */}
-      {error && (
-        <div className='card-error' role='alert'>
-          {error}
-        </div>
-      )}
-    </form>
+      <form id='payment-form' onSubmit={handleSubmit}>
+        <CardElement
+          id='card-element'
+          options={cardStyle}
+          onChange={handleChange}
+        />
+        <button
+          className='info-btn'
+          disabled={processing || disabled || succeeded}
+          id='submit'>
+          <span id='button-text'>
+            {processing ? (
+              <div className='spinner' id='spinner'></div>
+            ) : (
+              'Pay now'
+            )}
+          </span>
+        </button>
+        {/* Show any error that happens when processing the payment */}
+        {error && (
+          <div className='card-error' role='alert'>
+            {error}
+          </div>
+        )}
+      </form>
+    </div>
   );
 }

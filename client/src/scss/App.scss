@@ -101,6 +101,12 @@ $transparent: rgba(255, 255, 255, 0);
   color: rgb(253, 44, 90);
   margin: 2vh 1vw;
 }
+.close-btn {
+  background-color: $transparent;
+  border: 0px;
+  color: rgb(253, 44, 90);
+  margin-bottom: 10px;
+}
 
 .info-sections {
   width: 97vh;
