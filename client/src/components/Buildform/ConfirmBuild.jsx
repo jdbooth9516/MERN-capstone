@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import '../../scss/Confirmbuild.css';
+import history from 'react-router-dom';
 
 // redux import
 import { connect } from 'react-redux';
@@ -16,8 +18,8 @@ const ConfirmBuild = ({
   removeBuildExtra,
   removeFromTotal,
   total,
+  history,
 }) => {
-  axios.defaults.headers.common['x-auth-token'] = user;
   const addBuildToDatabase = async () => {
     console.log(user);
     const payload = {
@@ -39,6 +41,7 @@ const ConfirmBuild = ({
       );
       console.log(response.data);
       alert(`Build ${buildnames[0].msg} has been created`);
+      window.location.href = '/cart';
     } catch (error) {
       console.error(error.message);
     }
@@ -50,60 +53,65 @@ const ConfirmBuild = ({
   };
 
   return (
-    <div className="confirmbuild-cont">
-      <div>
-        <h2>Confirm Build</h2>
-      </div>
-      <div>
-        <h5> Build Name</h5>
-        <h3>{buildnames[0].msg}</h3>
-      </div>
-      <div>
-        <h4> Layout Selection</h4>
-        <h5> {buildlayouts[0].msg}</h5>
-        <h5>$ {buildlayouts[0].price}</h5>
-      </div>
+    <div className='confirm-container'>
+      <div className='confirm-body'>
+        <div className='confirm-section'>
+          <h2>Confirm Build</h2>
+        </div>
+        <div className='confirm-section'>
+          <h5> Build Name</h5>
+          <h3>{buildnames[0].msg}</h3>
+        </div>
+        <div className='confirm-section'>
+          <h4> Layout Selection</h4>
+          <h5> {buildlayouts[0].msg}</h5>
+          <h5>$ {buildlayouts[0].price}</h5>
+        </div>
 
-      <div>
-        <h4> Switch Selection</h4>
-        <h5> {buildswitch[0].msg}</h5>
-        <h5>$ {buildswitch[0].price}</h5>
-      </div>
+        <div className='confirm-section'>
+          <h4> Switch Selection</h4>
+          <h5> {buildswitch[0].msg}</h5>
+          <h5>$ {buildswitch[0].price}</h5>
+        </div>
 
-      <div>
-        <h4> Service Selection</h4>
-        <h5> {buildservice[0].msg}</h5>
-        <h5>$ {buildservice[0].price}</h5>
-      </div>
+        <div className='confirm-section'>
+          <h4> Service Selection</h4>
+          <h5> {buildservice[0].msg}</h5>
+          <h5>$ {buildservice[0].price}</h5>
+        </div>
 
-      <div>
-        <h4> Extra Selection</h4>
-        <h5> {buildextra[0].msg}</h5>
-        <h5>$ {buildextra[0].price}</h5>
-      </div>
+        <div className='confirm-section'>
+          <h4> Extra Selection</h4>
+          <h5> {buildextra[0].msg}</h5>
+          <h5>$ {buildextra[0].price}</h5>
+        </div>
 
-      <div>
-        <h4>Total Price</h4>
-        <h3>$ {total} </h3>
+        <div className='confirm-section'>
+          <h4>Total Price</h4>
+          <h3>$ {total} </h3>
+        </div>
+        <div className='button-section'>
+          <button
+            className=' confirm-btn'
+            onClick={() => {
+              addBuildToDatabase();
+            }}>
+            Confirm
+          </button>
+          <button
+            className='goback-btn-2'
+            onClick={() => {
+              goBack();
+            }}>
+            Go Back
+          </button>
+        </div>
       </div>
-
-      <button
-        onClick={() => {
-          addBuildToDatabase();
-        }}>
-        Confirm
-      </button>
-      <button
-        onClick={() => {
-          goBack();
-        }}>
-        Go Back
-      </button>
     </div>
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   buildnames: state.buildname,
   buildlayouts: state.buildlayout,
   buildswitch: state.buildswitch,

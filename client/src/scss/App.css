@@ -5,7 +5,7 @@
   background-blend-mode: normal;
   color: aliceblue;
   text-align: center;
-  height: 100vh;
+  height: 120vh;
 }
 
 .main-body {
@@ -68,7 +68,7 @@
 }
 
 .information-container {
-  background-color: #272727;
+  background-color: #333;
   color: aliceblue;
   padding-top: 5vh;
   display: -webkit-box;
@@ -152,7 +152,7 @@
       -ms-flex: 1 1 25%;
           flex: 1 1 25%;
   background-color: rgba(107, 114, 119, 0.651);
-  color: #cfcece;
+  color: aliceblue;
   border-radius: 3px;
   margin: 1vh 1vw;
 }
@@ -170,7 +170,65 @@
       justify-content: space-around;
 }
 
-.Layout-container {
+@-webkit-keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100;
+  }
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100;
+  }
+}
+
+@-webkit-keyframes slide {
+  from {
+    margin-left: 50vh;
+  }
+  to {
+    margin-left: 0;
+  }
+}
+
+@keyframes slide {
+  from {
+    margin-left: 50vh;
+  }
+  to {
+    margin-left: 0;
+  }
+}
+
+@-webkit-keyframes grow {
+  from {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+  to {
+    -webkit-transform: scale(1.5, 1.5);
+            transform: scale(1.5, 1.5);
+  }
+}
+
+@keyframes grow {
+  from {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+  to {
+    -webkit-transform: scale(1.5, 1.5);
+            transform: scale(1.5, 1.5);
+  }
+}
+
+.layout-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -185,6 +243,9 @@
       -ms-flex-align: center;
           align-items: center;
   padding: 2em;
+  overflow: hidden;
+  -webkit-animation: fadein 2s;
+          animation: fadein 2s;
 }
 
 .cards-container {
@@ -198,6 +259,8 @@
           flex-direction: row;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-animation: slide 0.5s;
+          animation: slide 0.5s;
 }
 
 .layout-card {
@@ -207,7 +270,23 @@
   color: #272727;
   border-radius: 3px;
   margin: 1vh 1vw;
-  padding: 0.5em 1em;
+  min-width: 20vw;
+  max-width: 25vw;
+  -webkit-transition: scale 1.5s;
+  transition: scale 1.5s;
+  -webkit-transition: display 1.5s;
+  transition: display 1.5s;
+}
+
+.layout-card:active {
+  -webkit-animation: grow 1.5s;
+          animation: grow 1.5s;
+}
+
+.layout-hidden {
+  display: none;
+  max-height: 50vh;
+  z-index: 5000;
 }
 
 .total-price {

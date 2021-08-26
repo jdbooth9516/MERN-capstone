@@ -10,7 +10,7 @@ POST http://localhost:5000/api/users HTTP/1.1
 Content-Type: application/json
 
 {
-  "name": "eptest",
+  "name": "",
   "email": "eptest@gmail.com",
   "role": "employee",
   "password": "testtest"

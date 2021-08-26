@@ -36,7 +36,7 @@ const BuildName = ({ setName }) => {
                 value={values.name}
               />
             </FormGroup>
-            <button className="reg-submit" onClick={handleSubmit}>
+            <button className="build-btn" onClick={handleSubmit}>
               Confirm
             </button>
           </Form>

@@ -7,12 +7,12 @@ const Buildhelper = () => {
   const [services, setServices] = useState('');
 
   return (
-    <div className="main-body">
+    <div className='main-body'>
       {question === 1 && (
-        <div className="question-body">
+        <div className='question-body'>
           <h4>How much functionality do you require from your keyboard?</h4>
-          <div className="btn-holder">
-            <div className="info-card">
+          <div className='btn-holder'>
+            <div className='info-card'>
               <p
                 onClick={() => {
                   setLayout('Full');
@@ -22,7 +22,7 @@ const Buildhelper = () => {
                 typing numbers
               </p>
             </div>
-            <div className="info-card">
+            <div className='info-card'>
               <p
                 onClick={() => {
                   setLayout('Tenkeyless');
@@ -32,7 +32,7 @@ const Buildhelper = () => {
                 function keys for shortcuts and window management.
               </p>
             </div>
-            <div className="info-card">
+            <div className='info-card'>
               <p
                 onClick={() => {
                   setLayout('60%');
@@ -41,25 +41,25 @@ const Buildhelper = () => {
                 I use the keyboard for typeing and gameing that's it.
               </p>
             </div>
-            <div className="info-card">
+            <div className='info-card'>
               <p
                 onClick={() => {
                   setLayout('Split');
                   setQuestion(2);
                 }}>
-                h5 and adjustablity
+                Comfort and adjustability
               </p>
             </div>
           </div>
         </div>
       )}
       {question === 2 && (
-        <div className="question-body">
+        <div className='question-body'>
           <h4>
             What kind of noise is acceptable and what kinds of feel sounds good?
           </h4>
-          <div className="btn-holder">
-            <div className="info-card">
+          <div className='btn-holder'>
+            <div className='info-card'>
               <p
                 onClick={() => {
                   setSwitch('Blue');
@@ -68,7 +68,7 @@ const Buildhelper = () => {
                 I like hearing the key activate and having a very tactile feel.
               </p>
             </div>
-            <div className="info-card">
+            <div className='info-card'>
               <p
                 onClick={() => {
                   setSwitch('Red');
@@ -77,7 +77,7 @@ const Buildhelper = () => {
                 I want a very quite switch with a smooth feel
               </p>
             </div>
-            <div className="info-card">
+            <div className='info-card'>
               <p
                 onClick={() => {
                   setSwitch('Brown');
@@ -90,10 +90,10 @@ const Buildhelper = () => {
         </div>
       )}
       {question === 3 && (
-        <div className="question-body">
+        <div className='question-body'>
           <h4>How picky about noise and feel are you?</h4>
-          <div className="btn-holder">
-            <div className="info-card">
+          <div className='btn-holder'>
+            <div className='info-card'>
               <p
                 onClick={() => {
                   setServices('full tune');
@@ -102,7 +102,7 @@ const Buildhelper = () => {
                 I want the quietest and best sound as well as smooth keypress.
               </p>
             </div>
-            <div className="info-card">
+            <div className='info-card'>
               <p
                 onClick={() => {
                   setServices('switch lube');
@@ -111,7 +111,7 @@ const Buildhelper = () => {
                 I want a smooth press of the key.
               </p>
             </div>
-            <div className="info-card">
+            <div className='info-card'>
               <p
                 onClick={() => {
                   setServices('stablizer tuning');
@@ -120,7 +120,7 @@ const Buildhelper = () => {
                 I just want the really annoying sound to be gone.
               </p>
             </div>
-            <div className="info-card">
+            <div className='info-card'>
               <p
                 onClick={() => {
                   setServices('None');
@@ -133,22 +133,22 @@ const Buildhelper = () => {
         </div>
       )}
       {question === 4 && (
-        <div className="answer-container">
+        <div className='answer-container'>
           <h5>Here is where you should start looking</h5>
-          <div className="info-card">
-            <div className="question-card">
+          <div className='info-card'>
+            <div className='question-card'>
               <h6>Layout: {layout}</h6>
             </div>
-            <div className="question-card">
+            <div className='question-card'>
               <h6>Switch: {switchchoice}</h6>
             </div>
-            <div className="question-card">
+            <div className='question-card'>
               <h6>Service: {services}</h6>
             </div>
           </div>
           <h6>Ready to start building</h6>
           <button
-            className="build-btn"
+            className='build-btn'
             onClick={() => (window.location.href = '/build')}>
             Build
           </button>

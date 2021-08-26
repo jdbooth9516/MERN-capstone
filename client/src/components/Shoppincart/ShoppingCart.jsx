@@ -22,13 +22,31 @@ const ShoppingCart = () => {
     }
   };
 
+  const deleteBuild = async (buildName) => {
+    const payload = {
+      buildname: buildName,
+    };
+    try {
+      await axios.delete(
+        `http://localhost:5000/api/build/${buildName}`,
+        {
+          headers: { 'x-auth-token': user },
+        },
+        payload
+      );
+      getBuilds();
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
   const checkForBuilds = () => {
     if (builds.length === 0) {
       getBuilds();
     }
   };
 
-  const createCart = async build => {
+  const createCart = async (build) => {
     const payload = {
       user: build.user,
       builds: build,
@@ -42,47 +60,62 @@ const ShoppingCart = () => {
 
   return (
     <div>
-      {builds.map((build, index) => (
-        <div key={index}>
-          <div>
-            <h6> Build Name</h6>
-            <h6>{build.buildname}</h6>
-          </div>
-          <div>
-            <h6> Layout Selection</h6>
-            <h6> {build.products[0]}</h6>
-          </div>
-
-          <div>
-            <h6> Switch Selection</h6>
-            <h6> {build.products[1]}</h6>
-          </div>
-
-          <div>
-            <h6> Service Selection</h6>
-            <h6> {build.products[2]}</h6>
-          </div>
-
-          <div>
-            <h6> Extra Selection</h6>
-            <h6> {build.products[3]}</h6>
-          </div>
-
-          <div>
-            <h6>Total Price</h6>
-            <h6>$ {build.totalprice} </h6>
-          </div>
-          <button
-            onClick={() => {
-              createCart(build);
-            }}>
-            Add to Cart
-          </button>
-        </div>
-      ))}
       <div>
-        <Link to="/checkout">
-          <button>Go to Checkout</button>
+        <Link to='/checkout'>
+          <button className='build-btn'>Go to Checkout</button>
+        </Link>
+      </div>
+      <div className='cards-container'>
+        {builds.map((build, index) => (
+          <div key={index} className='layout-card'>
+            <div>
+              <h5> Build Name</h5>
+              <h6>{build.buildname}</h6>
+            </div>
+            <div>
+              <h5> Layout Selection</h5>
+              <h6> {build.products[0]}</h6>
+            </div>
+
+            <div>
+              <h5> Switch Selection</h5>
+              <h6> {build.products[1]}</h6>
+            </div>
+
+            <div>
+              <h5> Service Selection</h5>
+              <h6> {build.products[2]}</h6>
+            </div>
+
+            <div>
+              <h5> Extra Selection</h5>
+              <h6> {build.products[3]}</h6>
+            </div>
+
+            <div>
+              <h5>Total Price</h5>
+              <h6>$ {build.totalprice} </h6>
+            </div>
+            <button
+              className='info-btn'
+              onClick={() => {
+                createCart(build);
+              }}>
+              Buy Now
+            </button>
+            <button
+              className='category-btn-4'
+              onClick={() => {
+                deleteBuild(build.buildname);
+              }}>
+              Delete
+            </button>
+          </div>
+        ))}
+      </div>
+      <div>
+        <Link to='/checkout'>
+          <button className='build-btn'>Go to Checkout</button>
         </Link>
       </div>
     </div>

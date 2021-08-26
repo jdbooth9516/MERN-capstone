@@ -1,6 +1,7 @@
 $main-background: #333;
 $light-background: rgb(137, 148, 155);
 $light-text: aliceblue;
+$transparent: rgba(255, 255, 255, 0);
 
 .App {
   background-image: linear-gradient(
@@ -13,7 +14,7 @@ $light-text: aliceblue;
   background-blend-mode: normal;
   color: $light-text;
   text-align: center;
-  height: 100vh;
+  height: 120vh;
 }
 
 .main-body {
@@ -39,7 +40,7 @@ $light-text: aliceblue;
 }
 
 .info-btn {
-  background-color: rgba(255, 255, 255, 0);
+  background-color: $transparent;
   border: 1px solid rgb(0, 153, 255);
   color: rgb(0, 153, 255);
   margin: 2vh 1vw;
@@ -47,7 +48,7 @@ $light-text: aliceblue;
 }
 
 .build-btn {
-  background-color: rgba(255, 255, 255, 0);
+  background-color: $transparent;
   border: 1px solid rgb(157, 253, 79);
   color: rgb(157, 253, 79);
   margin: 2vh 1vw;
@@ -55,7 +56,7 @@ $light-text: aliceblue;
 }
 
 .rec-btn {
-  background-color: rgba(255, 255, 255, 0);
+  background-color: $transparent;
   border: 1px solid rgb(242, 253, 79);
   color: rgb(242, 253, 79);
   margin: 2vh 1vw;
@@ -64,7 +65,7 @@ $light-text: aliceblue;
 
 // imformation sections
 .information-container {
-  background-color: rgb(39, 39, 39);
+  background-color: $main-background;
   color: aliceblue;
   padding-top: 5vh;
   display: flex;
@@ -77,25 +78,25 @@ $light-text: aliceblue;
 }
 
 .category-btn-1 {
-  background-color: rgba(255, 255, 255, 0);
+  background-color: $transparent;
   border: 0px;
   color: rgb(0, 153, 255);
   margin: 2vh 1vw;
 }
 .category-btn-2 {
-  background-color: rgba(255, 255, 255, 0);
+  background-color: $transparent;
   border: 0px;
   color: rgb(242, 253, 79);
   margin: 2vh 1vw;
 }
 .category-btn-3 {
-  background-color: rgba(255, 255, 255, 0);
+  background-color: $transparent;
   border: 0px;
   color: rgb(157, 253, 79);
   margin: 2vh 1vw;
 }
 .category-btn-4 {
-  background-color: rgba(255, 255, 255, 0);
+  background-color: $transparent;
   border: 0px;
   color: rgb(253, 44, 90);
   margin: 2vh 1vw;
@@ -119,7 +120,7 @@ $light-text: aliceblue;
 .info-card {
   flex: 1 1 25%;
   background-color: rgba(107, 114, 119, 0.651);
-  color: rgb(207, 206, 206);
+  color: $light-text;
   border-radius: 3px;
   margin: 1vh 1vw;
 }
@@ -132,12 +133,42 @@ $light-text: aliceblue;
 }
 
 // order area
-.Layout-container {
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 100;
+  }
+}
+
+@keyframes slide {
+  from {
+    margin-left: 50vh;
+  }
+  to {
+    margin-left: 0;
+  }
+}
+
+@keyframes grow {
+  from {
+    transform: scale(1, 1);
+  }
+  to {
+    transform: scale(1.5, 1.5);
+  }
+}
+
+.layout-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: 2em;
+  overflow: hidden;
+  animation: fadein 2s;
 }
 
 .cards-container {
@@ -145,6 +176,7 @@ $light-text: aliceblue;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  animation: slide 0.5s;
 }
 
 .layout-card {
@@ -153,7 +185,20 @@ $light-text: aliceblue;
   color: rgb(39, 39, 39);
   border-radius: 3px;
   margin: 1vh 1vw;
-  padding: 0.5em 1em;
+  min-width: 20vw;
+  max-width: 25vw;
+  transition: scale 1.5s;
+  transition: display 1.5s;
+}
+
+.layout-card:active {
+  animation: grow 1.5s;
+}
+
+.layout-hidden {
+  display: none;
+  max-height: 50vh;
+  z-index: 5000;
 }
 
 .total-price {
