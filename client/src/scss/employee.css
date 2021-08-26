@@ -1,0 +1,82 @@
+.portal-container {
+  color: #333;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.employee-options {
+  background-color: aliceblue;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 2em;
+  padding: 1em;
+  max-width: 20%;
+  border-radius: 5px;
+}
+
+.sales-container {
+  background-color: aliceblue;
+  margin: 2em;
+  padding: 1em;
+  min-width: 70%;
+  border-radius: 5px;
+}
+
+.option-btn {
+  background-color: aliceblue;
+  border: aliceblue 0px solid;
+  margin: 0.5em;
+}
+
+.sales-info {
+  background-color: aliceblue;
+  color: green;
+  border: green 2px solid;
+}
+
+.update-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.layout-view {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-bottom: 1px aliceblue solid;
+}
+
+.layout-view-item {
+  margin: 0.5em;
+}
+/*# sourceMappingURL=employee.css.map */

@@ -1,0 +1,58 @@
+$main-background: #333;
+$light-background: rgb(137, 148, 155);
+$light-text: aliceblue;
+$transparent: rgba(255, 255, 255, 0);
+
+.portal-container {
+  color: $main-background;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.employee-options {
+  background-color: $light-text;
+  display: flex;
+  flex-direction: column;
+  margin: 2em;
+  padding: 1em;
+  max-width: 20%;
+  border-radius: 5px;
+}
+
+.sales-container {
+  background-color: $light-text;
+  margin: 2em;
+  padding: 1em;
+  min-width: 70%;
+  border-radius: 5px;
+}
+
+.option-btn {
+  background-color: $light-text;
+  border: aliceblue 0px solid;
+  margin: 0.5em;
+}
+
+.sales-info {
+  background-color: $light-text;
+  color: green;
+  border: green 2px solid;
+}
+.update-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.layout-view {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-bottom: 1px aliceblue solid;
+}
+
+.layout-view-item {
+  margin: 0.5em;
+}

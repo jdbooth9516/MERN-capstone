@@ -5,6 +5,7 @@ import SwitchChart from './charts/SwitchChart';
 import ServiceChart from './charts/ServiceChart';
 import ExtrasChart from './charts/ExtrasChart';
 import { Link } from 'react-router-dom';
+import '../../scss/employee.css'
 
 const EmployeePortal = () => {
   const [builds, setBuilds] = useState([]);
@@ -31,7 +32,7 @@ const EmployeePortal = () => {
     setTimeout(() => {
       setChartsVis(
         <div>
-          <div>{/* <SalesTable sold={sold} /> */}</div>
+          
           <h4>Customer Interest by Builds</h4>
           <div>
             <LayoutChart />
