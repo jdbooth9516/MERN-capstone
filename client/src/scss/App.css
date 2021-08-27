@@ -200,7 +200,7 @@
     margin-left: 50vh;
   }
   to {
-    margin-left: 0;
+    margin-left: 0vw;
   }
 }
 
@@ -209,7 +209,7 @@
     margin-left: 50vh;
   }
   to {
-    margin-left: 0;
+    margin-left: 0vw;
   }
 }
 
@@ -250,6 +250,7 @@
       -ms-flex-align: center;
           align-items: center;
   padding: 2em;
+  margin-left: 5vw;
   overflow: hidden;
   -webkit-animation: fadein 2s;
           animation: fadein 2s;
@@ -268,6 +269,7 @@
       flex-wrap: wrap;
   -webkit-animation: slide 0.5s;
           animation: slide 0.5s;
+  padding-left: 10vw;
 }
 
 .layout-card {

@@ -154,7 +154,7 @@ $transparent: rgba(255, 255, 255, 0);
     margin-left: 50vh;
   }
   to {
-    margin-left: 0;
+    margin-left: 0vw;
   }
 }
 
@@ -173,6 +173,7 @@ $transparent: rgba(255, 255, 255, 0);
   justify-content: space-between;
   align-items: center;
   padding: 2em;
+  margin-left: 5vw;
   overflow: hidden;
   animation: fadein 2s;
 }
@@ -183,6 +184,7 @@ $transparent: rgba(255, 255, 255, 0);
   flex-direction: row;
   flex-wrap: wrap;
   animation: slide 0.5s;
+  padding-left: 10vw;
 }
 
 .layout-card {
